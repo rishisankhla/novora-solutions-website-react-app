@@ -1,0 +1,9 @@
+Contact: mailto:security@novorasolutions.com
+Contact: https://novorasolutions.com/security/contact
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://novorasolutions.com/pgp-key.txt
+Preferred-Languages: en
+Canonical: https://novorasolutions.com/.well-known/security.txt
+Policy: https://novorasolutions.com/security-policy
+Hiring: https://novorasolutions.com/careers
+Acknowledgments: https://novorasolutions.com/security/hall-of-fame

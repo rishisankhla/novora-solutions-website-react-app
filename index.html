@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Novora Solutions | Custom Software Development & AI Solutions</title>
+    <meta name="title" content="Novora Solutions | Custom Software Development & AI Solutions">
+    <meta name="description" content="Novora Solutions transforms innovative ideas into digital reality with cutting-edge web, mobile, and AI development services. Get custom software solutions that drive growth and efficiency.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://novorasolutions.com/">
+    <meta property="og:title" content="Novora Solutions | Custom Software Development & AI Solutions">
+    <meta property="og:description" content="Transforming innovative ideas into digital reality with cutting-edge web, mobile, and AI development services. Get custom software solutions that drive growth and efficiency.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://novorasolutions.com/">
+    <meta property="twitter:title" content="Novora Solutions | Custom Software Development & AI Solutions">
+    <meta property="twitter:description" content="Transforming innovative ideas into digital reality with cutting-edge web, mobile, and AI development services. Get custom software solutions that drive growth and efficiency.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80">
+    
+    <!-- Keywords -->
+    <meta name="keywords" content="software development, web app development, mobile app development, AI solutions, custom software, MVP development, startup technology, cloud solutions, full-stack development, React development, Node.js development">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://novorasolutions.com/">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Novora Solutions">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Preconnect to important domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/images/Novora-Logo.png" as="image">
+    <link rel="preload" href="/src/main.tsx" as="script">
+    <link rel="prefetch" href="/offline.html">
+    
+    <!-- PWA related links -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Microsoft Tile -->
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+    
+    <!-- Humans.txt -->
+    <link type="text/plain" rel="author" href="/humans.txt">
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Novora Solutions Blog" href="/feed.xml">
+    
+    <!-- OpenSearch -->
+    <link rel="search" type="application/opensearchdescription+xml" title="Novora Solutions" href="/opensearch.xml">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
+      
+      // Monitor online/offline status
+      function updateOnlineStatus() {
+        const statusIndicator = document.createElement('div');
+        if (!navigator.onLine) {
+          statusIndicator.style.cssText = 'position:fixed;top:0;left:0;right:0;background-color:#ef4444;color:white;text-align:center;padding:0.5rem;z-index:9999;';
+          statusIndicator.id = 'offline-indicator';
+          statusIndicator.textContent = 'You are currently offline. Some features may be limited.';
+          document.body.prepend(statusIndicator);
+        } else {
+          const existingIndicator = document.getElementById('offline-indicator');
+          if (existingIndicator) {
+            existingIndicator.remove();
+          }
+        }
+      }
+      
+      window.addEventListener('online', updateOnlineStatus);
+      window.addEventListener('offline', updateOnlineStatus);
+      window.addEventListener('load', updateOnlineStatus);
+    </script>
+  </body>
+</html>

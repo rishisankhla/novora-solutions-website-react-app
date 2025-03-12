@@ -1,0 +1,63 @@
+/* TEAM */
+    Founder: Rishi Sankhla
+    Contact: contact@novorasolutions.com
+    Twitter: @rishisankhla
+    Location: United States
+
+    Founder: Rohan Sankhla
+    Contact: contact@novorasolutions.com
+    Twitter: @rohansankhla
+    Location: United States
+
+    Founder: Aryaveer Sankhla
+    Contact: contact@novorasolutions.com
+    Twitter: @aryaveersankhla
+    Location: United States
+
+    Lead Developer: Alex Johnson
+    Contact: alex@novorasolutions.com
+    Twitter: @alexjdev
+    Location: United States
+
+    UI/UX Designer: Sophia Chen
+    Contact: sophia@novorasolutions.com
+    Twitter: @sophiadesigns
+    Location: United States
+
+    AI Engineer: Marcus Williams
+    Contact: marcus@novorasolutions.com
+    Twitter: @marcusai
+    Location: United States
+
+/* SITE */
+    Last update: 2025-01-01
+    Standards: HTML5, CSS3, ES2020
+    Components: React, Tailwind CSS, Vite
+    Software: Visual Studio Code, Git, Figma
+    Language: English
+    Doctype: HTML5
+    IDE: Visual Studio Code
+
+/* THANKS */
+    React Team: For the amazing library
+    Tailwind CSS Team: For the utility-first CSS framework
+    Vite Team: For the lightning-fast build tool
+    Open Source Community: For all the incredible tools and libraries
+
+/* SITE GENERATION */
+    Build tool: Vite
+    Deployment: Netlify
+    Version control: Git
+    Repository: GitHub
+    CI/CD: GitHub Actions
+
+/* TECHNOLOGY */
+    Frontend: React 18, TypeScript, Tailwind CSS
+    State Management: React Context API
+    Form Handling: React Hook Form
+    Notifications: React Hot Toast
+    Icons: Lucide React
+    SEO: React Helmet Async
+    Email: EmailJS
+    PWA Support: Service Workers
+    Performance Optimization: Code Splitting, Lazy Loading

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Novora Solutions Blog</title>
+    <description>Latest news, articles, and insights from Novora Solutions on software development, AI, and technology trends.</description>
+    <link>https://novorasolutions.com</link>
+    <atom:link href="https://novorasolutions.com/feed.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jan 2025 12:00:00 GMT</lastBuildDate>
+    <managingEditor>contact@novorasolutions.com (Novora Solutions)</managingEditor>
+    <webMaster>contact@novorasolutions.com (Novora Solutions)</webMaster>
+    <category>Software Development</category>
+    <category>AI Solutions</category>
+    <category>Web Development</category>
+    <category>Mobile Apps</category>
+    <category>Technology</category>
+    <copyright>Copyright 2025 Novora Solutions</copyright>
+    <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <generator>Novora Solutions RSS Generator 1.0</generator>
+    <ttl>60</ttl>
+    <image>
+      <url>https://novorasolutions.com/images/Novora-Logo.png</url>
+      <title>Novora Solutions Blog</title>
+      <link>https://novorasolutions.com</link>
+      <width>144</width>
+      <height>144</height>
+    </image>
+    
+    <item>
+      <title>The Future of AI in Software Development</title>
+      <description>Explore how artificial intelligence is transforming the software development landscape and what it means for businesses in 2025.</description>
+      <link>https://novorasolutions.com/blog/future-of-ai-in-software-development</link>
+      <guid isPermaLink="true">https://novorasolutions.com/blog/future-of-ai-in-software-development</guid>
+      <pubDate>Wed, 01 Jan 2025 10:00:00 GMT</pubDate>
+      <category>AI</category>
+      <category>Software Development</category>
+      <author>contact@novorasolutions.com (Rishi Sankhla)</author>
+      <content:encoded><![CDATA[
+        <h1>The Future of AI in Software Development</h1>
+        <p>Artificial intelligence is revolutionizing how we build software. In this article, we explore the latest trends and what they mean for businesses in 2025.</p>
+        <h2>Key Trends</h2>
+        <ul>
+          <li>AI-assisted coding is becoming mainstream</li>
+          <li>Automated testing and debugging are reducing development time</li>
+          <li>LLMs are transforming requirements gathering and documentation</li>
+        </ul>
+        <p>Read the full article to learn how your business can leverage these technologies.</p>
+      ]]></content:encoded>
+      <enclosure url="https://novorasolutions.com/images/blog/ai-software-dev.jpg" length="0" type="image/jpeg" />
+    </item>
+    
+    <item>
+      <title>Building Scalable Web Applications with Modern Technologies</title>
+      <description>Learn about the best practices and technologies for building web applications that can scale with your business needs.</description>
+      <link>https://novorasolutions.com/blog/building-scalable-web-applications</link>
+      <guid isPermaLink="true">https://novorasolutions.com/blog/building-scalable-web-applications</guid>
+      <pubDate>Tue, 31 Dec 2024 10:00:00 GMT</pubDate>
+      <category>Web Development</category>
+      <category>Scalability</category>
+      <author>contact@novorasolutions.com (Rohan Sankhla)</author>
+      <content:encoded><![CDATA[
+        <h1>Building Scalable Web Applications with Modern Technologies</h1>
+        <p>Scalability is crucial for growing businesses. This article covers essential practices for building web applications that can handle increasing loads.</p>
+        <h2>Key Considerations</h2>
+        <ul>
+          <li>Microservices architecture for modular scaling</li>
+          <li>Serverless functions for cost-effective operations</li>
+          <li>Database optimization techniques</li>
+          <li>Caching strategies for improved performance</li>
+        </ul>
+        <p>Read the full article to learn how to implement these strategies in your next project.</p>
+      ]]></content:encoded>
+      <enclosure url="https://novorasolutions.com/images/blog/scalable-web-apps.jpg" length="0" type="image/jpeg" />
+    </item>
+    
+    <item>
+      <title>The Rise of Progressive Web Apps in 2025</title>
+      <description>Discover why Progressive Web Apps (PWAs) are becoming the preferred choice for businesses looking to enhance their digital presence.</description>
+      <link>https://novorasolutions.com/blog/rise-of-progressive-web-apps</link>
+      <guid isPermaLink="true">https://novorasolutions.com/blog/rise-of-progressive-web-apps</guid>
+      <pubDate>Mon, 30 Dec 2024 10:00:00 GMT</pubDate>
+      <category>Web Development</category>
+      <category>PWA</category>
+      <category>Mobile</category>
+      <author>contact@novorasolutions.com (Aryaveer Sankhla)</author>
+      <content:encoded><![CDATA[
+        <h1>The Rise of Progressive Web Apps in 2025</h1>
+        <p>Progressive Web Apps combine the best of web and mobile apps. Learn why they're gaining traction among businesses of all sizes.</p>
+        <h2>Benefits of PWAs</h2>
+        <ul>
+          <li>Offline functionality improves user experience</li>
+          <li>Push notifications increase engagement</li>
+          <li>Faster loading times reduce bounce rates</li>
+          <li>Lower development costs compared to native apps</li>
+        </ul>
+        <p>Read the full article to learn how to implement PWA features in your web applications.</p>
+      ]]></content:encoded>
+      <enclosure url="https://novorasolutions.com/images/blog/pwa-trends.jpg" length="0" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>

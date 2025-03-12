@@ -1,0 +1,51 @@
+# Netlify headers file
+
+# Security headers for all pages
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self' https://images.unsplash.com https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com;
+  Link: </css/main.css>; rel=preload; as=style
+  Link: </js/main.js>; rel=preload; as=script
+  Link: </images/Novora-Logo.png>; rel=preload; as=image
+  Link: </fonts/main-font.woff2>; rel=preload; as=font; crossorigin
+
+# HTML files - shorter cache, network-first strategy
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Cache static assets with long expiration and immutable flag
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache JavaScript and CSS with versioning
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache images
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache fonts
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache favicon
+/favicon*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache manifest and service worker with shorter duration
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate

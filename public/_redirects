@@ -1,0 +1,9 @@
+# Netlify redirects file
+
+# Redirect HTTP to HTTPS
+http://novorasolutions.com/* https://novorasolutions.com/:splat 301!
+http://www.novorasolutions.com/* https://novorasolutions.com/:splat 301!
+https://www.novorasolutions.com/* https://novorasolutions.com/:splat 301!
+
+# SPA routing - send all routes to index.html
+/*    /index.html   200

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Novora Solutions</ShortName>
+  <Description>Search Novora Solutions website</Description>
+  <Tags>software development ai solutions web mobile</Tags>
+  <Contact>contact@novorasolutions.com</Contact>
+  <Url type="text/html" template="https://novorasolutions.com/search?q={searchTerms}"/>
+  <Url type="application/x-suggestions+json" template="https://novorasolutions.com/api/suggestions?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://novorasolutions.com/opensearch.xml"/>
+  <LongName>Novora Solutions - Custom Software Development &amp; AI Solutions</LongName>
+  <Image height="16" width="16" type="image/x-icon">https://novorasolutions.com/favicon.ico</Image>
+  <Image height="64" width="64" type="image/png">https://novorasolutions.com/favicon-64x64.png</Image>
+  <Image height="128" width="128" type="image/png">https://novorasolutions.com/favicon-128x128.png</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <Language>en-us</Language>
+  <Developer>Novora Solutions Development Team</Developer>
+  <Attribution>Search results provided by Novora Solutions</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+  <AdultContent>false</AdultContent>
+  <Query role="example" searchTerms="web development"/>
+</OpenSearchDescription>
