@@ -9,25 +9,6 @@
     Twitter: @rohansankhla
     Location: United States
 
-    Founder: Aryaveer Sankhla
-    Contact: contact@novorasolutions.com
-    Twitter: @aryaveersankhla
-    Location: United States
-
-    Lead Developer: Alex Johnson
-    Contact: alex@novorasolutions.com
-    Twitter: @alexjdev
-    Location: United States
-
-    UI/UX Designer: Sophia Chen
-    Contact: sophia@novorasolutions.com
-    Twitter: @sophiadesigns
-    Location: United States
-
-    AI Engineer: Marcus Williams
-    Contact: marcus@novorasolutions.com
-    Twitter: @marcusai
-    Location: United States
 
 /* SITE */
     Last update: 2025-01-01

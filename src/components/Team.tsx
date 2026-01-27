@@ -7,22 +7,23 @@ import { ExtendedTeam } from './team/ExtendedTeam';
 const teamMembers = [
   {
     name: "Rishi Sankhla",
-    role: "Director",
+    role: "Director & CTO",
     image: "/images/rishi.jpeg",
     linkedin: "https://www.linkedin.com/rishisankhla/"
   },
   {
-    name: "Rohan Sankhla",
-    role: "Director",
-    image: "/images/rohan.jpeg",
-    linkedin: "https://www.linkedin.com/rohansankhla/"
+    name: "Shakti Singh",
+    role: "Director & CEO",
+    image: "/images/person-dummy.jpg",
+    linkedin: "https://www.linkedin.com/in/shakti-singh-1175a210b/"
   },
   {
-    name: "Aryaveer Sankhla",
-    role: "Director",
-    image: "/images/aryaveer.jpeg",
-    linkedin: "https://www.linkedin.com/in/aryaveer-sankhla-a417251b3"
+    name: "Rohan Sankhla",
+    role: "Director & COO",
+    image: "/images/rohan.jpeg",
+    linkedin: "https://www.linkedin.com/rohansankhla/"
   }
+
 ];
 
 export function Team() {
@@ -35,7 +36,7 @@ export function Team() {
             Meet the visionaries behind Novora Solutions, driving innovation and excellence in everything we do.
           </p>
         </div>
-        
+
         {/* Team Member Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
           {teamMembers.map((member, index) => (
