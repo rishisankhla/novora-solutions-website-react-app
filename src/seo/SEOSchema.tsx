@@ -16,10 +16,10 @@ interface SEOSchemaProps {
 }
 
 export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
-  const currentUrl = typeof window !== 'undefined' 
+  const currentUrl = typeof window !== 'undefined'
     ? `https://novorasolutions.com${window.location.pathname}${window.location.hash}`
     : 'https://novorasolutions.com/';
-  
+
   // Base organization schema
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -34,7 +34,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "email": "contact@novorasolutions.com",
+      "email": "inquiry@novorasolutions.com",
       "contactType": "customer service",
       "availableLanguage": "English"
     },
@@ -151,7 +151,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
         "name": "How can I contact Novora Solutions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can contact us through our website contact form, by email at contact@novorasolutions.com, or by scheduling a consultation through our website. We typically respond within 2-4 business hours."
+          "text": "You can contact us through our website contact form, by email at inquiry@novorasolutions.com, or by scheduling a consultation through our website. We typically respond within 2-4 business hours."
         }
       }
     ]
@@ -266,7 +266,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
   const schemas = [];
   schemas.push(organizationSchema);
   schemas.push(websiteSchema);
-  
+
   if (pageType === 'home') {
     schemas.push(serviceSchema);
     schemas.push(faqSchema);
@@ -276,7 +276,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
   } else if (pageType === 'blog' && articleData) {
     schemas.push(articleSchema);
   }
-  
+
   schemas.push(webPageSchema);
 
   return (

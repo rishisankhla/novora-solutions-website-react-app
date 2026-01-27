@@ -15,7 +15,7 @@ export function NewsletterSubscription() {
         'service_ysqmorx', // Newsletter service ID
         'template_oeq3v0u', // Newsletter template ID
         {
-          to_email: 'contact@novorasolutions.com',
+          to_email: 'inquiry@novorasolutions.com',
           from_email: email,
           from_name: 'This is from newsletter subscription',
           subject: 'New Newsletter Subscription',

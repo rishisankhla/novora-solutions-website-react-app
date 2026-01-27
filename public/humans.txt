@@ -1,11 +1,11 @@
 /* TEAM */
     Founder: Rishi Sankhla
-    Contact: contact@novorasolutions.com
+    Contact: inquiry@novorasolutions.com
     Twitter: @rishisankhla
     Location: United States
 
     Founder: Rohan Sankhla
-    Contact: contact@novorasolutions.com
+    Contact: inquiry@novorasolutions.com
     Twitter: @rohansankhla
     Location: United States
 

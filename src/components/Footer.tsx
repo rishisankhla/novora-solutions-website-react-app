@@ -1,12 +1,12 @@
-import React from 'react'; 
-import { 
-  Linkedin, 
-  Twitter, 
-  Instagram, 
-  Github, 
-  Mail, 
-  Clock, 
-  MessageSquare, 
+import React from 'react';
+import {
+  Linkedin,
+  Twitter,
+  Instagram,
+  Github,
+  Mail,
+  Clock,
+  MessageSquare,
   Globe2,
   ArrowRight
 } from 'lucide-react';
@@ -25,14 +25,14 @@ export function Footer() {
           {/* Company Info */}
           <div className="flex-shrink-0 w-full lg:w-auto max-w-[280px]">
             <div className="mb-6">
-              <img 
-                src="/images/Novora-Logo.png" 
-                alt="Novora Solutions" 
+              <img
+                src="/images/Novora-Logo.png"
+                alt="Novora Solutions"
                 className="h-12 brightness-200 hover:brightness-150 transition-all duration-300"
               />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              Empowering businesses through innovative technology solutions. We transform ideas into 
+              Empowering businesses through innovative technology solutions. We transform ideas into
               digital reality with cutting-edge development and AI-powered solutions.
             </p>
             <div className="flex space-x-4">
@@ -100,8 +100,8 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-blue-400 mr-3 flex-shrink-0" />
-                <a href="mailto:contact@novorasolutions.com" className="text-gray-300 hover:text-white">
-                  contact@novorasolutions.com
+                <a href="mailto:inquiry@novorasolutions.com" className="text-gray-300 hover:text-white">
+                  inquiry@novorasolutions.com
                 </a>
               </li>
               <li className="flex items-center">

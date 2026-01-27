@@ -3,7 +3,7 @@
   <ShortName>Novora Solutions</ShortName>
   <Description>Search Novora Solutions website</Description>
   <Tags>software development ai solutions web mobile</Tags>
-  <Contact>contact@novorasolutions.com</Contact>
+  <Contact>inquiry@novorasolutions.com</Contact>
   <Url type="text/html" template="https://novorasolutions.com/search?q={searchTerms}"/>
   <Url type="application/x-suggestions+json" template="https://novorasolutions.com/api/suggestions?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://novorasolutions.com/opensearch.xml"/>

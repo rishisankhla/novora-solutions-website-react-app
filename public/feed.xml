@@ -7,8 +7,8 @@
     <atom:link href="https://novorasolutions.com/feed.xml" rel="self" type="application/rss+xml" />
     <language>en-us</language>
     <lastBuildDate>Wed, 01 Jan 2025 12:00:00 GMT</lastBuildDate>
-    <managingEditor>contact@novorasolutions.com (Novora Solutions)</managingEditor>
-    <webMaster>contact@novorasolutions.com (Novora Solutions)</webMaster>
+    <managingEditor>inquiry@novorasolutions.com (Novora Solutions)</managingEditor>
+    <webMaster>inquiry@novorasolutions.com (Novora Solutions)</webMaster>
     <category>Software Development</category>
     <category>AI Solutions</category>
     <category>Web Development</category>
@@ -34,7 +34,7 @@
       <pubDate>Wed, 01 Jan 2025 10:00:00 GMT</pubDate>
       <category>AI</category>
       <category>Software Development</category>
-      <author>contact@novorasolutions.com (Rishi Sankhla)</author>
+      <author>inquiry@novorasolutions.com (Rishi Sankhla)</author>
       <content:encoded><![CDATA[
         <h1>The Future of AI in Software Development</h1>
         <p>Artificial intelligence is revolutionizing how we build software. In this article, we explore the latest trends and what they mean for businesses in 2025.</p>
@@ -57,7 +57,7 @@
       <pubDate>Tue, 31 Dec 2024 10:00:00 GMT</pubDate>
       <category>Web Development</category>
       <category>Scalability</category>
-      <author>contact@novorasolutions.com (Rohan Sankhla)</author>
+      <author>inquiry@novorasolutions.com (Rohan Sankhla)</author>
       <content:encoded><![CDATA[
         <h1>Building Scalable Web Applications with Modern Technologies</h1>
         <p>Scalability is crucial for growing businesses. This article covers essential practices for building web applications that can handle increasing loads.</p>
@@ -82,7 +82,7 @@
       <category>Web Development</category>
       <category>PWA</category>
       <category>Mobile</category>
-      <author>contact@novorasolutions.com (Rishi Sankhla)</author>
+      <author>inquiry@novorasolutions.com (Rishi Sankhla)</author>
       <content:encoded><![CDATA[
         <h1>The Rise of Progressive Web Apps in 2025</h1>
         <p>Progressive Web Apps combine the best of web and mobile apps. Learn why they're gaining traction among businesses of all sizes.</p>

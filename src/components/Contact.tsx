@@ -26,7 +26,7 @@ export function Contact() {
         'service_c48vc59', // Contact form service ID
         'template_oeq3v0u', // Contact form template ID
         {
-          to_email: 'contact@novorasolutions.com',
+          to_email: 'inquiry@novorasolutions.com',
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
@@ -77,8 +77,8 @@ export function Contact() {
               <Mail className="h-6 w-6 text-blue-600 mr-4" />
               <div>
                 <h4 className="font-semibold text-gray-900">Email</h4>
-                <a href="mailto:contact@novorasolutions.com" className="text-gray-600 hover:text-blue-600 transition-colors">
-                  contact@novorasolutions.com
+                <a href="mailto:inquiry@novorasolutions.com" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  inquiry@novorasolutions.com
                 </a>
               </div>
             </div>
