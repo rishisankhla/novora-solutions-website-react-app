@@ -186,46 +186,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
   } : null;
 
   // Local business schema
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Novora Solutions",
-    "image": "https://novorasolutions.com/images/Novora-Logo.png",
-    "url": "https://novorasolutions.com",
-    "telephone": "+1-800-123-4567",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Tech Avenue",
-      "addressLocality": "San Francisco",
-      "addressRegion": "CA",
-      "postalCode": "94107",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 37.7749,
-      "longitude": -122.4194
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "17:00"
-      }
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/company/novora-solutions",
-      "https://twitter.com/novorasolutions",
-      "https://github.com/novora-solutions"
-    ]
-  };
+
 
   // WebPage schema
   const webPageSchema = {
@@ -270,7 +231,6 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
   if (pageType === 'home') {
     schemas.push(serviceSchema);
     schemas.push(faqSchema);
-    schemas.push(localBusinessSchema);
   } else if (pageType === 'services') {
     schemas.push(serviceSchema);
   } else if (pageType === 'blog' && articleData) {

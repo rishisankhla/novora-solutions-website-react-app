@@ -8,9 +8,7 @@
   <Url type="application/x-suggestions+json" template="https://novorasolutions.com/api/suggestions?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://novorasolutions.com/opensearch.xml"/>
   <LongName>Novora Solutions - Custom Software Development &amp; AI Solutions</LongName>
-  <Image height="16" width="16" type="image/x-icon">https://novorasolutions.com/favicon.ico</Image>
-  <Image height="64" width="64" type="image/png">https://novorasolutions.com/favicon-64x64.png</Image>
-  <Image height="128" width="128" type="image/png">https://novorasolutions.com/favicon-128x128.png</Image>
+  <Image height="128" width="128" type="image/png">https://novorasolutions.com/images/Novora-Logo.png</Image>
   <InputEncoding>UTF-8</InputEncoding>
   <OutputEncoding>UTF-8</OutputEncoding>
   <Language>en-us</Language>
