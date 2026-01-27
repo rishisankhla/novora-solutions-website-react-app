@@ -1,6 +1,6 @@
 {
   "name": "Novora Solutions",
-  "short_name": "Novora",
+  "short_name": "Novora Solutions",
   "description": "Custom software development and AI solutions for businesses and startups",
   "start_url": "/",
   "display": "standalone",
@@ -10,7 +10,12 @@
   "scope": "/",
   "lang": "en-US",
   "dir": "ltr",
-  "categories": ["business", "technology", "software", "development"],
+  "categories": [
+    "business",
+    "technology",
+    "software",
+    "development"
+  ],
   "screenshots": [
     {
       "src": "/images/screenshots/desktop.png",
@@ -83,14 +88,24 @@
       "short_name": "Contact",
       "description": "Get in touch with Novora Solutions",
       "url": "/#contact",
-      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     },
     {
       "name": "Our Services",
       "short_name": "Services",
       "description": "Explore our software development services",
       "url": "/#services",
-      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "/favicon-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ],
   "related_applications": [],

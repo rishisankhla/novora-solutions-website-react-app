@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface SEOSchemaProps {
@@ -109,6 +108,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Novora Solutions",
+    "alternateName": ["Novora"],
     "url": "https://novorasolutions.com",
     "potentialAction": {
       "@type": "SearchAction",
