@@ -13,25 +13,25 @@ export default defineConfig({
         // Ensure the .well-known directory exists
         const wellKnownSrcDir = path.resolve(__dirname, 'public/.well-known');
         const wellKnownDestDir = path.resolve(__dirname, 'dist/.well-known');
-        
+
         if (fs.existsSync(wellKnownSrcDir)) {
           if (!fs.existsSync(wellKnownDestDir)) {
             fs.mkdirSync(wellKnownDestDir, { recursive: true });
           }
-          
+
           // Copy all files from .well-known directory
           const wellKnownFiles = fs.readdirSync(wellKnownSrcDir);
           wellKnownFiles.forEach(file => {
             const srcPath = path.resolve(wellKnownSrcDir, file);
             const destPath = path.resolve(wellKnownDestDir, file);
-            
+
             if (fs.statSync(srcPath).isFile()) {
               fs.copyFileSync(srcPath, destPath);
               console.log(`${file} copied to dist/.well-known folder`);
             }
           });
         }
-        
+
         // List of SEO files to ensure are copied
         const seoFiles = [
           'sitemap.xml',
@@ -41,18 +41,17 @@ export default defineConfig({
           'humans.txt',
           'opensearch.xml',
           'feed.xml',
-          '404.html',
           'offline.html',
           'web.config',
           '_redirects',
           '_headers',
           'sw.js'
         ];
-        
+
         seoFiles.forEach(file => {
           const srcPath = path.resolve(__dirname, `public/${file}`);
           const destPath = path.resolve(__dirname, `dist/${file}`);
-          
+
           if (fs.existsSync(srcPath)) {
             fs.copyFileSync(srcPath, destPath);
             console.log(`${file} copied to dist folder`);
@@ -92,7 +91,7 @@ export default defineConfig({
             // All other dependencies
             return 'vendor-other';
           }
-          
+
           // Split app code by major features
           if (id.includes('/components/')) {
             if (id.includes('/services/')) {
