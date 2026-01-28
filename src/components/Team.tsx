@@ -14,7 +14,7 @@ const teamMembers = [
   {
     name: "Shakti Singh",
     role: "Director & CEO",
-    image: "/images/person-dummy.jpg",
+    image: "/images/shakti_2.png",
     linkedin: "https://www.linkedin.com/in/shakti-singh-1175a210b/"
   },
   {
