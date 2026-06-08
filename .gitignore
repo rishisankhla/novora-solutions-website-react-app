@@ -11,6 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.local
+
+# Local uploaded media (tracked in DB; files stay on disk)
+server/uploads/*
+!server/uploads/.gitkeep
 
 # Editor directories and files
 .vscode/*
