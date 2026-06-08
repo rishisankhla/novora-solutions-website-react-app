@@ -29,13 +29,19 @@
       "name": "Contact Us",
       "short_name": "Contact",
       "description": "Get in touch with Novora Solutions",
-      "url": "/#contact"
+      "url": "/contact"
     },
     {
-      "name": "Our Services",
-      "short_name": "Services",
+      "name": "Our Products",
+      "short_name": "Products",
       "description": "Explore our software development services",
-      "url": "/#services"
+      "url": "/products"
+    },
+    {
+      "name": "Careers",
+      "short_name": "Careers",
+      "description": "View open positions and apply",
+      "url": "/careers"
     }
   ],
   "related_applications": [],

@@ -1,194 +1,148 @@
-import React from 'react';
-import { 
-  Sparkles, 
-  Rocket, 
-  Brain, 
-  Cloud,
-  Code2,
-  Database,
-  Globe,
-  Laptop,
-  Server,
-  Smartphone,
-  Cpu,
-  Wifi
-} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ROUTES } from '../routes/paths';
+import { Button } from './ui/Button';
+import { STATS } from '../data/conversion';
 
 interface HeroProps {
-  scrollProgress: number;
+  scrollProgress?: number;
 }
 
-export function Hero({ scrollProgress }: HeroProps) {
-  const scale = 1 + scrollProgress * 0.6;
-  const opacity = Math.max(0, 1 - scrollProgress * 1.2);
+const PROOF_POINTS = [
+  'Production-grade engineering',
+  'AI & cloud-native delivery',
+  '2–4 hour response time',
+];
+
+export function Hero({ scrollProgress = 0 }: HeroProps) {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const fade = prefersReducedMotion ? 1 : Math.max(0, 1 - scrollProgress * 1.1);
+  const lift = prefersReducedMotion ? 0 : scrollProgress * -48;
 
   return (
-    <section 
-      className="h-screen pt-14 relative overflow-hidden flex items-center pointer-events-none"
-      style={{
-        opacity,
-        transform: `scale(${scale})`,
-        transition: 'transform 0.1s ease-out'
-      }}
+    <section
+      className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20 pb-16 lg:pt-24"
+      aria-label="Hero"
     >
-      {/* Animated background with more dramatic fade and scale */}
-      <div 
-        className="absolute inset-0 animate-gradient bg-gradient-to-br from-blue-50 via-indigo-50 to-white -z-10"
-        style={{
-          opacity: Math.max(0, 1 - scrollProgress * 0.9),
-          transform: `scale(${1 + scrollProgress * 0.4})`
-        }}
+      {/* Ambient background */}
+      <div className="absolute inset-0 bg-mesh-hero mesh-noise -z-10" />
+      <div
+        className="absolute top-1/4 -right-32 w-[480px] h-[480px] rounded-full bg-brand-400/10 blur-3xl -z-10"
+        aria-hidden
       />
-      
-      {/* Floating icons with enhanced parallax effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <Sparkles 
-          className="absolute top-[15%] left-[20%] text-blue-400 opacity-20 h-8 w-8 md:h-12 md:w-12 animate-float" 
-          style={{ 
-            animationDelay: '0s',
-            transform: `translate(${scrollProgress * 200}px, ${scrollProgress * 150}px) rotate(${scrollProgress * 45}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Brain 
-          className="absolute top-[25%] right-[25%] text-indigo-400 opacity-20 h-10 w-10 md:h-16 md:w-16 animate-float" 
-          style={{ 
-            animationDelay: '1s',
-            transform: `translate(${scrollProgress * -160}px, ${scrollProgress * -120}px) rotate(${scrollProgress * -45}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Cloud 
-          className="absolute top-[45%] left-[30%] text-blue-300 opacity-20 h-10 w-10 md:h-14 md:w-14 animate-float" 
-          style={{ 
-            animationDelay: '2s',
-            transform: `translate(${scrollProgress * 160}px, ${scrollProgress * 160}px) rotate(${scrollProgress * 30}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Rocket 
-          className="absolute top-[55%] right-[30%] text-indigo-300 opacity-20 h-8 w-8 md:h-12 md:w-12 animate-float" 
-          style={{ 
-            animationDelay: '3s',
-            transform: `translate(${scrollProgress * -240}px, ${scrollProgress * -180}px) rotate(${scrollProgress * -30}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Code2 
-          className="absolute top-[35%] left-[40%] text-blue-400 opacity-20 h-9 w-9 md:h-14 md:w-14 animate-float" 
-          style={{ 
-            animationDelay: '4s',
-            transform: `translate(${scrollProgress * 180}px, ${scrollProgress * -140}px) rotate(${scrollProgress * 35}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Database 
-          className="absolute top-[65%] left-[15%] text-indigo-400 opacity-20 h-8 w-8 md:h-12 md:w-12 animate-float" 
-          style={{ 
-            animationDelay: '5s',
-            transform: `translate(${scrollProgress * -200}px, ${scrollProgress * 160}px) rotate(${scrollProgress * -40}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Globe 
-          className="absolute top-[20%] right-[15%] text-blue-300 opacity-20 h-10 w-10 md:h-16 md:w-16 animate-float" 
-          style={{ 
-            animationDelay: '6s',
-            transform: `translate(${scrollProgress * 220}px, ${scrollProgress * -170}px) rotate(${scrollProgress * 25}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Laptop 
-          className="absolute top-[75%] right-[20%] text-indigo-300 opacity-20 h-9 w-9 md:h-14 md:w-14 animate-float" 
-          style={{ 
-            animationDelay: '7s',
-            transform: `translate(${scrollProgress * -180}px, ${scrollProgress * 140}px) rotate(${scrollProgress * -35}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Server 
-          className="absolute top-[40%] right-[40%] text-blue-400 opacity-20 h-8 w-8 md:h-12 md:w-12 animate-float" 
-          style={{ 
-            animationDelay: '8s',
-            transform: `translate(${scrollProgress * 160}px, ${scrollProgress * -130}px) rotate(${scrollProgress * 40}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Smartphone 
-          className="absolute top-[60%] left-[35%] text-indigo-400 opacity-20 h-9 w-9 md:h-14 md:w-14 animate-float" 
-          style={{ 
-            animationDelay: '9s',
-            transform: `translate(${scrollProgress * -140}px, ${scrollProgress * 150}px) rotate(${scrollProgress * -25}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Cpu 
-          className="absolute top-[30%] left-[10%] text-blue-300 opacity-20 h-8 w-8 md:h-12 md:w-12 animate-float" 
-          style={{ 
-            animationDelay: '10s',
-            transform: `translate(${scrollProgress * 190}px, ${scrollProgress * -160}px) rotate(${scrollProgress * 35}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-        <Wifi 
-          className="absolute top-[70%] right-[10%] text-indigo-300 opacity-20 h-10 w-10 md:h-16 md:w-16 animate-float" 
-          style={{ 
-            animationDelay: '11s',
-            transform: `translate(${scrollProgress * -170}px, ${scrollProgress * 130}px) rotate(${scrollProgress * -30}deg)`,
-            opacity: 0.2 - scrollProgress * 0.15
-          }} 
-        />
-      </div>
+      <div
+        className="absolute -bottom-24 -left-24 w-[400px] h-[400px] rounded-full bg-indigo-400/10 blur-3xl -z-10"
+        aria-hidden
+      />
 
-      <div className="w-[95%] mx-auto px-4 md:px-0">
-        <div 
-          className="text-center relative z-10 flex flex-col items-center gap-8 md:gap-12"
-          style={{
-            transform: `translateY(${scrollProgress * -100}px) scale(${1 - scrollProgress * 0.15})`,
-            opacity: Math.max(0, 1 - scrollProgress * 1.2)
-          }}
-        >
-          {/* Main heading with animated reveal */}
-          <div className="animate-fade-in-up opacity-0" style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 flex flex-col gap-2 md:gap-4">
-              <span className="leading-tight">Turning Innovative Ideas Into</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 animate-gradient leading-tight pb-1">
-                Digital Reality
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px)',
+          backgroundSize: '64px 64px',
+          maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent)',
+        }}
+        aria-hidden
+      />
+
+      <div
+        className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+        style={{
+          opacity: fade,
+          transform: `translateY(${lift}px)`,
+        }}
+      >
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Editorial copy */}
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-5 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+              Custom software · AI · Cloud
+            </p>
+
+            <h1
+              className="heading-display text-[2.5rem] sm:text-5xl lg:text-6xl xl:text-[4.25rem] mb-6 animate-fade-up text-balance"
+              style={{ animationDelay: '0.2s' }}
+            >
+              Engineering digital products{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-indigo-600">
+                built to earn trust
               </span>
             </h1>
-          </div>
 
-          {/* Subheading with animated reveal */}
-          <div className="animate-fade-in-up opacity-0" style={{ animationDelay: '0.4s' }}>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
-              From AI-powered solutions to scalable cloud platforms, we empower businesses 
-              with cutting-edge technology that drives growth, enhances efficiency, and 
-              creates lasting impact. Let's build your digital success story together.
+            <p
+              className="text-lg sm:text-xl text-ink-muted max-w-xl leading-relaxed mb-8 animate-fade-up"
+              style={{ animationDelay: '0.35s' }}
+            >
+              We partner with ambitious teams to design, build, and ship web, mobile, and AI
+              platforms — with the polish of a product company and the rigor of an enterprise studio.
             </p>
+
+            <ul
+              className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mb-10 animate-fade-up"
+              style={{ animationDelay: '0.45s' }}
+            >
+              {PROOF_POINTS.map((point) => (
+                <li
+                  key={point}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-ink-muted bg-white/80 border border-surface-border rounded-full px-4 py-2 shadow-sm"
+                >
+                  <CheckCircle2 className="h-4 w-4 text-brand-600 shrink-0" aria-hidden />
+                  {point}
+                </li>
+              ))}
+            </ul>
+
+            <div
+              className="flex flex-col sm:flex-row gap-3 animate-fade-up"
+              style={{ animationDelay: '0.55s' }}
+            >
+              <Button to={ROUTES.contact} size="lg">
+                Start your project
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Button>
+              <Button to={ROUTES.portfolio} variant="secondary" size="lg">
+                View our work
+              </Button>
+            </div>
           </div>
 
-          {/* CTA buttons with animated reveal and pointer-events-auto */}
-          <div className="animate-fade-in-up opacity-0 flex flex-col sm:flex-row gap-4 sm:space-x-4 w-full sm:w-auto pointer-events-auto px-4 sm:px-0" style={{ animationDelay: '0.6s' }}>
-            <a 
-              href="#contact" 
-              className="w-full sm:w-auto inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg hover:scale-105 transform transition-all duration-300 text-center"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Get Started
-            </a>
-            <a 
-              href="#services" 
-              className="w-full sm:w-auto inline-block bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg border-2 border-blue-600 hover:bg-blue-50 transition-colors duration-300 text-center"
-              onClick={(e) => {
-                e.preventDefault();
-                document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Explore Services
-            </a>
+          {/* Bento proof panel — conversion + credibility at first glance */}
+          <div
+            className="lg:col-span-5 animate-fade-up"
+            style={{ animationDelay: '0.4s' }}
+          >
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-br from-brand-500/10 to-indigo-500/10 rounded-4xl blur-2xl" aria-hidden />
+              <div className="relative grid grid-cols-2 gap-3 p-3 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/80 shadow-elevated">
+                {STATS.map((stat, i) => (
+                  <div
+                    key={stat.label}
+                    className={`card-premium p-5 sm:p-6 ${i === 0 ? 'col-span-2 sm:col-span-1' : ''}`}
+                  >
+                    <p className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">{stat.value}</p>
+                    <p className="text-sm text-ink-muted mt-1">{stat.label}</p>
+                  </div>
+                ))}
+                <div className="col-span-2 card-premium p-5 sm:p-6 bg-gradient-to-br from-brand-600 to-indigo-600 text-white border-0 shadow-glow">
+                  <p className="text-sm font-medium text-blue-100 mb-1">Ready when you are</p>
+                  <p className="text-lg font-semibold leading-snug mb-4">
+                    Book a free discovery call — no commitment, clear next steps.
+                  </p>
+                  <Link
+                    to={ROUTES.contact}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/15 hover:bg-white/25 rounded-lg px-4 py-2 transition-colors"
+                  >
+                    Talk to our team
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

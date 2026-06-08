@@ -17,10 +17,10 @@ export interface ServiceCardProps {
 }
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, techStack, features }) => (
-  <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 transition-all duration-300 hover:shadow-xl border border-gray-100 hover:bg-white h-full flex flex-col">
-    <div className="text-blue-600 mb-4 sm:mb-6">{icon}</div>
-    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">{title}</h3>
-    <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">{description}</p>
+  <div className="card-premium p-6 sm:p-8 h-full flex flex-col group">
+    <div className="text-brand-600 mb-4 sm:mb-6 p-2.5 rounded-xl bg-brand-50 w-fit group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300">{icon}</div>
+    <h3 className="text-xl sm:text-2xl font-bold text-ink mb-3 sm:mb-4">{title}</h3>
+    <p className="text-ink-muted mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">{description}</p>
     {features && (
       <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow">
         {features.map((feature, index) => (

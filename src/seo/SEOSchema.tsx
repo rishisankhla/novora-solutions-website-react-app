@@ -16,7 +16,7 @@ interface SEOSchemaProps {
 
 export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
   const currentUrl = typeof window !== 'undefined'
-    ? `https://novorasolutions.com${window.location.pathname}${window.location.hash}`
+    ? `https://novorasolutions.com${window.location.pathname}`
     : 'https://novorasolutions.com/';
 
   // Base organization schema
@@ -160,7 +160,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
   // Article schema (for blog posts)
   const articleSchema = articleData ? {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": articleData.title,
     "description": articleData.description,
     "image": articleData.image || "https://novorasolutions.com/images/blog-default.jpg",
@@ -216,8 +216,8 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
         ...(pageType !== 'home' ? [{
           "@type": "ListItem",
           "position": 2,
-          "name": capitalizeFirstLetter(pageType),
-          "item": `https://novorasolutions.com/#${pageType}`
+          "name": capitalizeFirstLetter(pageType === 'services' ? 'products' : pageType),
+          "item": currentUrl
         }] : [])
       ]
     }

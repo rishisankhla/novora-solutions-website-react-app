@@ -2,6 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply antialiased;
+    color: #0f172a;
+  }
+
+  body {
+    @apply font-sans;
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-900;
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .card-premium {
+    @apply rounded-2xl border bg-white shadow-card transition-all duration-300;
+    border-color: #e2e8f0;
+  }
+
+  .card-premium:hover {
+    @apply shadow-elevated -translate-y-0.5;
+    border-color: rgb(191 219 254 / 0.6);
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand-600;
+  }
+
+  .heading-display {
+    @apply font-display font-bold tracking-tight leading-[1.05];
+    color: #0f172a;
+  }
+
+  .mesh-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .prose-novora {
+    @apply max-w-none;
+    color: #475569;
+  }
+
+  .prose-novora p {
+    @apply text-lg leading-[1.75] mb-6;
+  }
+
+  .prose-novora h2 {
+    @apply text-2xl font-bold mt-10 mb-4 tracking-tight;
+    color: #0f172a;
+  }
+
+  .prose-novora h3 {
+    @apply text-xl font-bold mt-8 mb-3;
+    color: #0f172a;
+  }
+
+  .prose-novora a {
+    @apply text-brand-600 font-medium hover:text-brand-700 underline underline-offset-2;
+  }
+
+  .prose-novora ul,
+  .prose-novora ol {
+    @apply my-6 pl-6 space-y-2;
+  }
+
+  .prose-novora li {
+    @apply text-lg leading-relaxed;
+  }
+
+  .prose-novora blockquote {
+    @apply border-l-4 border-brand-300 pl-6 italic my-8;
+    color: #475569;
+  }
+}
+
 @keyframes float {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-20px); }
@@ -39,11 +122,33 @@
   }
 }
 
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-fade-in-up {
+.animate-fade-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
@@ -54,23 +159,94 @@
 
 .card-animate {
   opacity: 0;
-  animation: cardFlipIn 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: cardFlipIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Animation delay utilities with longer delays */
 .delay-0 { animation-delay: 0s; }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
-.delay-4 { animation-delay: 0.8s; }
-.delay-5 { animation-delay: 1s; }
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
 
-/* Smooth scrolling for the entire page */
+/* Scroll reveal — visible by default; hidden only when JS is active */
+.reveal {
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+html.js .reveal:not(.revealed) {
+  opacity: 0;
+}
+
+.reveal-fade-up {
+  transform: translateY(24px);
+}
+
+.reveal-fade-in {
+  transform: none;
+}
+
+.reveal-slide-left {
+  transform: translateX(-32px);
+}
+
+.reveal-slide-right {
+  transform: translateX(32px);
+}
+
+.reveal-scale {
+  transform: scale(0.96);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Page transitions */
+.page-transition {
+  animation-duration: 0.25s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.page-transition--enter {
+  animation-name: pageEnter;
+}
+
+.page-transition--exit {
+  animation-name: pageExit;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js .reveal:not(.revealed) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal {
+    transition: none;
+  }
+
+  .animate-float,
+  .animate-fade-in-up,
+  .animate-gradient,
+  .card-animate,
+  .page-transition {
+    animation: none !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

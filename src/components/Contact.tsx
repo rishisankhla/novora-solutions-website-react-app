@@ -1,7 +1,10 @@
-import React, { useState, FormEvent } from 'react';
-import { Clock, Mail, Globe2, MessageSquare } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
+import { useState, FormEvent, useRef } from 'react';
+import { Clock, Mail, Globe2, MessageSquare, ArrowRight } from 'lucide-react';
+import toast from 'react-hot-toast';
+import { FormField, FormInput, FormTextarea } from './ui/FormField';
+import { Button } from './ui/Button';
+import { Section } from './ui/Section';
+import { publicApi } from '../lib/api';
 
 interface FormData {
   name: string;
@@ -9,36 +12,57 @@ interface FormData {
   message: string;
 }
 
+const TRUST_POINTS = [
+  {
+    icon: MessageSquare,
+    title: 'Quick response',
+    description: 'We typically reply within 2–4 business hours.',
+  },
+  {
+    icon: Clock,
+    title: 'Flexible engagement',
+    description: 'Project-based, retainer, or dedicated team models.',
+  },
+  {
+    icon: Mail,
+    title: 'Direct line',
+    description: 'inquiry@novorasolutions.com',
+    href: 'mailto:inquiry@novorasolutions.com',
+  },
+  {
+    icon: Globe2,
+    title: 'Global delivery',
+    description: 'Remote-first collaboration across time zones.',
+  },
+];
+
 export function Contact() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await emailjs.send(
-        'service_c48vc59', // Contact form service ID
-        'template_oeq3v0u', // Contact form template ID
-        {
-          to_email: 'inquiry@novorasolutions.com',
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        },
-        'VvayPoq7kqtqoC4kl' // Contact form public key
-      );
+      await publicApi.submitContact({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        honeypot: honeypotRef.current?.value ?? '',
+      });
 
       toast.success('Message sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
-      console.error('Email sending failed:', error);
+      toast.error(
+        error instanceof Error ? error.message : 'Failed to send message. Please try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -46,94 +70,122 @@ export function Contact() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <Toaster position="top-right" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Contact Us</h2>
-          <p className="text-gray-600">Get in touch to discuss how we can help your business</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="flex items-center">
-              <Clock className="h-6 w-6 text-blue-600 mr-4" />
-              <div>
-                <h4 className="font-semibold text-gray-900">24/7 Availability</h4>
-                <p className="text-gray-600">Our team is available round the clock to assist you</p>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <MessageSquare className="h-6 w-6 text-blue-600 mr-4" />
-              <div>
-                <h4 className="font-semibold text-gray-900">Quick Response</h4>
-                <p className="text-gray-600">We typically respond within 2-4 business hours</p>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <Mail className="h-6 w-6 text-blue-600 mr-4" />
-              <div>
-                <h4 className="font-semibold text-gray-900">Email</h4>
-                <a href="mailto:inquiry@novorasolutions.com" className="text-gray-600 hover:text-blue-600 transition-colors">
-                  inquiry@novorasolutions.com
-                </a>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <Globe2 className="h-6 w-6 text-blue-600 mr-4" />
-              <div>
-                <h4 className="font-semibold text-gray-900">Global Service</h4>
-                <p className="text-gray-600">Supporting clients worldwide with remote collaboration</p>
-              </div>
+    <Section className="bg-surface-soft">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="lg:col-span-2">
+          <div className="relative overflow-hidden rounded-4xl bg-ink text-white p-8 sm:p-10 h-full">
+            <div className="absolute inset-0 bg-mesh-dark opacity-80" aria-hidden />
+            <div className="relative">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300 mb-4">
+                Why reach out
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4 text-balance">
+                Let's talk about what you're building
+              </h2>
+              <p className="text-slate-300 leading-relaxed mb-8">
+                Share your goals, timeline, and constraints. We'll respond with honest feedback —
+                whether we're the right fit or not.
+              </p>
+
+              <ul className="space-y-5">
+                {TRUST_POINTS.map((point) => {
+                  const Icon = point.icon;
+                  return (
+                    <li key={point.title} className="flex gap-4">
+                      <div className="flex-shrink-0 p-2 rounded-xl bg-white/10">
+                        <Icon className="h-5 w-5 text-brand-300" aria-hidden />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-white">{point.title}</p>
+                        {point.href ? (
+                          <a
+                            href={point.href}
+                            className="text-sm text-slate-300 hover:text-white transition-colors"
+                          >
+                            {point.description}
+                          </a>
+                        ) : (
+                          <p className="text-sm text-slate-300">{point.description}</p>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        </div>
+
+        <div className="lg:col-span-3">
+          <form
+            onSubmit={handleSubmit}
+            className="card-premium p-6 sm:p-8 lg:p-10 space-y-6"
+            noValidate
+          >
+            <input
+              ref={honeypotRef}
+              type="text"
+              name="website"
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+            />
+
             <div>
-              <input
-                type="text"
+              <h3 className="text-xl font-bold text-ink mb-1">Send a message</h3>
+              <p className="text-sm text-ink-muted">All fields are required.</p>
+            </div>
+
+            <FormField id="contact-name" label="Your name" required>
+              <FormInput
+                id="contact-name"
                 name="name"
+                type="text"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Your Name"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                autoComplete="name"
+                placeholder="Jane Smith"
               />
-            </div>
-            <div>
-              <input
-                type="email"
+            </FormField>
+
+            <FormField id="contact-email" label="Work email" required>
+              <FormInput
+                id="contact-email"
                 name="email"
+                type="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Your Email"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                autoComplete="email"
+                placeholder="jane@company.com"
               />
-            </div>
-            <div>
-              <textarea
+            </FormField>
+
+            <FormField id="contact-message" label="Project details" required>
+              <FormTextarea
+                id="contact-message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Your Message"
                 required
-                rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
+                rows={5}
+                placeholder="Tell us about your product, timeline, and what success looks like..."
+              />
+            </FormField>
+
+            <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending…' : 'Send message'}
+              {!isSubmitting && <ArrowRight className="h-4 w-4" />}
+            </Button>
           </form>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

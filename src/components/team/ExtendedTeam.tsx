@@ -60,7 +60,6 @@ export function ExtendedTeam() {
     
     // Map x position (0-100) to angle (45-280)
     const angle = 45 + (mousePosition.x / 100) * 235;
-    console.log(angle);
     return angle;
   };
 

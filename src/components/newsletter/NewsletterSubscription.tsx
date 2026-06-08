@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
+import { publicApi } from '../../lib/api';
 
 export function NewsletterSubscription() {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await emailjs.send(
-        'service_ysqmorx', // Newsletter service ID
-        'template_oeq3v0u', // Newsletter template ID
-        {
-          to_email: 'inquiry@novorasolutions.com',
-          from_email: email,
-          from_name: 'This is from newsletter subscription',
-          subject: 'New Newsletter Subscription',
-          message: `New subscription request from: ${email}`,
-        },
-        'VvayPoq7kqtqoC4kl' // Newsletter public key
-      );
+      await publicApi.submitNewsletter({
+        email,
+        honeypot: honeypotRef.current?.value ?? '',
+      });
 
       toast.success('Successfully subscribed to newsletter!');
       setEmail('');
     } catch (error) {
-      console.error('Newsletter subscription failed:', error);
-      toast.error('Failed to subscribe. Please try again.');
+      toast.error(error instanceof Error ? error.message : 'Failed to subscribe. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -36,6 +28,7 @@ export function NewsletterSubscription() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
+      <input ref={honeypotRef} type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
       <div className="relative">
         <input
           type="email"

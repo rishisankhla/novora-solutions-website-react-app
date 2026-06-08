@@ -1,23 +1,33 @@
-import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import { ScrollReveal } from '../ui/ScrollReveal';
+import { Button } from '../ui/Button';
+import { ROUTES } from '../../routes/paths';
 
 export function JoinTeam() {
   return (
-    <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-8 text-center text-white">
-      <h3 className="text-2xl font-bold mb-4">Join Our Team</h3>
-      <p className="max-w-2xl mx-auto mb-6">
-        We're always looking for talented individuals who share our passion for innovation 
-        and excellence. Join us in building the future of technology.
-      </p>
-      <a
-        href="#contact"
-        className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-        onClick={(e) => {
-          e.preventDefault();
-          document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        Get in Touch
-      </a>
-    </div>
+    <ScrollReveal>
+      <div className="relative overflow-hidden rounded-4xl bg-ink text-white px-8 py-12 sm:px-12 sm:py-14 text-center">
+        <div className="absolute inset-0 bg-mesh-dark opacity-80" aria-hidden />
+        <div className="relative max-w-xl mx-auto">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300 mb-4">
+            We're hiring
+          </p>
+          <h3 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
+            Join our team
+          </h3>
+          <p className="text-slate-300 leading-relaxed mb-8">
+            We're always looking for talented people who care about craft, collaboration, and
+            building products that matter.
+          </p>
+          <Button
+            to={ROUTES.careers}
+            className="!bg-white !text-ink hover:!bg-brand-50"
+          >
+            View open positions
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
+    </ScrollReveal>
   );
 }

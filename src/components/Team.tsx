@@ -1,84 +1,127 @@
-import React from 'react';
-import { Linkedin } from 'lucide-react';
-import { Values } from './team/Values';
-import { JoinTeam } from './team/JoinTeam';
-import { ExtendedTeam } from './team/ExtendedTeam';
+import { Users } from 'lucide-react';
+import { ScrollReveal } from './ui/ScrollReveal';
+import { Section } from './ui/Section';
+import { TeamMemberCard } from './team/TeamMemberCard';
+import { getTeamGridClass, getSkeletonCount } from './team/teamGrid';
+import { useCmsTeam } from '../hooks/useCmsData';
 
-const teamMembers = [
-  {
-    name: "Rishi Sankhla",
-    role: "Director & CTO",
-    image: "/images/rishi.jpeg",
-    linkedin: "https://www.linkedin.com/rishisankhla/"
-  },
-  {
-    name: "Shakti Singh",
-    role: "Director & CEO",
-    image: "/images/shakti_2.png",
-    linkedin: "https://www.linkedin.com/in/shakti-singh-1175a210b/"
-  },
-  {
-    name: "Rohan Sankhla",
-    role: "Director & COO",
-    image: "/images/rohan.jpeg",
-    linkedin: "https://www.linkedin.com/rohansankhla/"
-  }
+function TeamSkeleton({ variant }: { variant: 'leadership' | 'member' }) {
+  const count = getSkeletonCount(variant);
+  const size = variant === 'leadership' ? 'w-32 h-32' : 'w-28 h-28';
 
-];
-
-export function Team() {
   return (
-    <section id="team" className="pt-10 pb-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Leadership Team</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Meet the visionaries behind Novora Solutions, driving innovation and excellence in everything we do.
-          </p>
+    <div className={getTeamGridClass(count, variant)}>
+      {Array.from({ length: count }).map((_, i) => (
+        <div key={i} className="flex flex-col items-center animate-pulse">
+          <div className={`rounded-full bg-surface-muted ${size} mb-4`} />
+          <div className="h-5 w-32 rounded-lg bg-surface-muted mb-2" />
+          <div className="h-4 w-24 rounded bg-surface-muted/80 mb-3" />
+          <div className="h-12 w-full max-w-[14rem] rounded bg-surface-muted/60" />
         </div>
+      ))}
+    </div>
+  );
+}
 
-        {/* Team Member Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
-          {teamMembers.map((member, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
-              <div className="aspect-w-1 aspect-h-1 relative">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-64 object-cover"
-                  onError={(e) => {
-                    console.error(`Failed to load image for ${member.name}:`, e);
-                    e.currentTarget.src = 'https://via.placeholder.com/400x400?text=Image+Not+Found';
-                  }}
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-gray-600 mb-4">{member.role}</p>
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-700"
-                >
-                  <Linkedin className="h-5 w-5 mr-2" />
-                  <span>View Profile</span>
-                </a>
-              </div>
-            </div>
+function TeamBlock({
+  eyebrow,
+  title,
+  description,
+  members,
+  variant,
+  loading,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+  members: ReturnType<typeof useCmsTeam>['members'];
+  variant: 'leadership' | 'member';
+  loading: boolean;
+}) {
+  if (!loading && members.length === 0) return null;
+
+  return (
+    <div className={variant === 'member' ? 'mt-20 sm:mt-28 pt-20 sm:pt-24 border-t border-surface-border/80' : ''}>
+      <header className="text-center mb-12 sm:mb-16 max-w-2xl mx-auto">
+        <p className="eyebrow mb-3">{eyebrow}</p>
+        <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight mb-4 text-balance">{title}</h2>
+        <p className="text-lg text-ink-muted leading-relaxed">{description}</p>
+      </header>
+
+      {loading ? (
+        <TeamSkeleton variant={variant} />
+      ) : (
+        <div className={getTeamGridClass(members.length, variant)}>
+          {members.map((member, index) => (
+            <TeamMemberCard key={member.id} member={member} index={index} variant={variant} />
           ))}
         </div>
+      )}
+    </div>
+  );
+}
 
-        {/* Extended Team Section */}
-        <ExtendedTeam />
+export function Team() {
+  const { leadership, extended, members, loading } = useCmsTeam();
+  const leadershipMembers = leadership.length > 0 ? leadership : members.filter((m) => m.isLeadership);
+  const teamMembers = extended.length > 0 ? extended : members.filter((m) => !m.isLeadership);
+  const totalCount = leadershipMembers.length + teamMembers.length;
 
-        {/* Closing Statement */}
-        <div className="text-center mb-8">
-          <p className="text-xl font-semibold text-blue-600">
-            We don't just build teams—we bring together exceptional talent to transform your business challenges into innovative solutions.
+  return (
+    <Section className="bg-surface-soft relative overflow-hidden">
+      <div className="absolute inset-0 bg-mesh-hero opacity-40 pointer-events-none" aria-hidden />
+      <div
+        className="absolute top-20 right-0 w-72 h-72 rounded-full bg-brand-400/5 blur-3xl pointer-events-none"
+        aria-hidden
+      />
+      <div
+        className="absolute bottom-10 left-0 w-64 h-64 rounded-full bg-indigo-400/5 blur-3xl pointer-events-none"
+        aria-hidden
+      />
+
+      <div className="relative">
+        {!loading && totalCount > 0 && (
+          <ScrollReveal className="flex justify-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-surface-border text-sm text-ink-muted shadow-sm">
+              <Users className="h-4 w-4 text-brand-600" aria-hidden />
+              <span>
+                <strong className="text-ink font-semibold">{totalCount}</strong> people building with
+                you
+              </span>
+            </div>
+          </ScrollReveal>
+        )}
+
+        <TeamBlock
+          eyebrow="Leadership"
+          title="Direction & standards"
+          description="The leaders who set strategy, quality, and how we show up for every client."
+          members={leadershipMembers}
+          variant="leadership"
+          loading={loading}
+        />
+
+        <TeamBlock
+          eyebrow="The team"
+          title="Builders, designers & operators"
+          description="Specialists across engineering, design, and delivery — scalable as we grow."
+          members={teamMembers}
+          variant="member"
+          loading={loading}
+        />
+
+        {!loading && leadershipMembers.length === 0 && teamMembers.length === 0 && (
+          <p className="text-center text-ink-subtle py-16">
+            Team profiles will appear here once published in the admin panel.
           </p>
-        </div>
+        )}
+
+        <ScrollReveal className="text-center mt-16 sm:mt-20 max-w-2xl mx-auto">
+          <p className="text-lg font-semibold text-brand-600 leading-relaxed">
+            Exceptional people, clear communication, and craft you can see in every deliverable.
+          </p>
+        </ScrollReveal>
       </div>
-    </section>
+    </Section>
   );
 }

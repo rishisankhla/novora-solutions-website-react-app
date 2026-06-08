@@ -4,14 +4,14 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
 
-// Register service worker for PWA functionality
-if ('serviceWorker' in navigator) {
+// Mark JS as active for progressive reveal styles
+document.documentElement.classList.add('js');
+
+// Register service worker for PWA functionality (production only — avoids stale cache in dev)
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        
-        // Check for updates to the service worker
+      .then((registration) => {
         registration.addEventListener('updatefound', () => {
           const newWorker = registration.installing;
           if (newWorker) {
@@ -26,8 +26,8 @@ if ('serviceWorker' in navigator) {
           }
         });
       })
-      .catch(error => {
-        console.log('ServiceWorker registration failed: ', error);
+      .catch(() => {
+        // Service worker registration failed — app still works without offline support
       });
   });
   

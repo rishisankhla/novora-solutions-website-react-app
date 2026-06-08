@@ -1,42 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ArrowUp } from 'lucide-react';
 
 export function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-
-  const handleScroll = () => {
-    const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    
-    setScrollProgress(scrolled);
-    setIsVisible(winScroll > 300);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrollProgress(height > 0 ? (winScroll / height) * 100 : 0);
+      setIsVisible(winScroll > 300);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
 
   if (!isVisible) return null;
 
   return (
     <button
-      onClick={scrollToTop}
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       className="fixed bottom-6 right-6 z-50 group"
       aria-label="Scroll to top"
     >
       <div className="relative p-2 bg-blue-600/40 hover:bg-blue-600/60 backdrop-blur-[2px] rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105">
-        {/* Progress circle */}
-        <svg className="w-8 h-8 transform -rotate-90">
+        <svg className="w-8 h-8 transform -rotate-90" aria-hidden>
           <circle
             className="text-white/5"
             strokeWidth="1"
@@ -59,17 +56,8 @@ export function ScrollToTop() {
             cy="16"
           />
         </svg>
-        
-        {/* Arrow icon */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <ArrowUp className="w-4 h-4 text-white/90 transform transition-transform group-hover:translate-y-[-1px]" />
-        </div>
-        
-        {/* Tooltip */}
-        <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-gray-900/70 backdrop-blur-sm text-white/90 text-xs py-1 px-1.5 rounded">
-            {Math.round(scrollProgress)}%
-          </div>
+          <ArrowUp className="w-4 h-4 text-white/90 transform transition-transform group-hover:-translate-y-0.5" />
         </div>
       </div>
     </button>

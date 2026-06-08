@@ -66,7 +66,7 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   build: {
-    sourcemap: true,
+    sourcemap: process.env.NODE_ENV !== 'production',
     rollupOptions: {
       output: {
         // Improved chunk splitting strategy
@@ -140,6 +140,16 @@ export default defineConfig({
     port: 3000,
     open: true,
     cors: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+      '/uploads': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
     // Add headers for local development
     headers: {
       'Cache-Control': 'no-store',
