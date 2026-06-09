@@ -4,13 +4,17 @@ import { CanonicalUrl } from '../components/SEO/CanonicalUrl';
 import { JsonLdBreadcrumbs } from '../components/SEO/JsonLdBreadcrumbs';
 import { PageHeader } from '../components/ui/PageHeader';
 import { PortfolioWall } from '../components/portfolio/PortfolioWall';
-import { portfolioProjects } from '../data/portfolio';
+import { PageLoader } from '../components/ui/PageLoader';
+import { Section } from '../components/ui/Section';
 import { useCmsPortfolio } from '../hooks/useCmsData';
 import { getCanonicalUrl } from '../routes/paths';
 
 export function PortfolioPage() {
-  const { projects: projectsFromApi } = useCmsPortfolio();
-  const portfolioProjectsList = projectsFromApi.length ? projectsFromApi : portfolioProjects;
+  const { projects, loading } = useCmsPortfolio();
+
+  if (loading) {
+    return <PageLoader />;
+  }
 
   return (
     <>
@@ -35,7 +39,13 @@ export function PortfolioPage() {
         breadcrumb="Portfolio"
       />
 
-      <PortfolioWall projects={portfolioProjectsList} />
+      {projects.length > 0 ? (
+        <PortfolioWall projects={projects} />
+      ) : (
+        <Section className="text-center">
+          <p className="text-ink-muted">Portfolio projects will appear here once published in the admin panel.</p>
+        </Section>
+      )}
     </>
   );
 }

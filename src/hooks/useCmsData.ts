@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { publicApi } from '../lib/api';
-import { JOB_POSITIONS, type JobPosition } from '../data/careers';
-import { blogPosts, type BlogPost } from '../data/blog';
-import { portfolioProjects, type PortfolioProject } from '../data/portfolio';
+import type { BlogPost, JobPosition, PortfolioProject } from '../lib/types/cms';
 
 export function useCmsJobs() {
-  const [jobs, setJobs] = useState<JobPosition[]>(JOB_POSITIONS);
+  const [jobs, setJobs] = useState<JobPosition[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     publicApi
@@ -20,18 +19,19 @@ export function useCmsJobs() {
           description: String(j.description),
           highlights: (j.highlights as string[]) ?? [],
         }));
-        if (mapped.length) setJobs(mapped);
+        setJobs(mapped);
       })
-      .catch(() => {})
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
-  return { jobs, loading, positionOptions: jobs.map((j) => j.title) };
+  return { jobs, loading, error, positionOptions: jobs.map((j) => j.title) };
 }
 
 export function useCmsBlog() {
-  const [posts, setPosts] = useState<BlogPost[]>(blogPosts);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     publicApi
@@ -48,18 +48,19 @@ export function useCmsBlog() {
           readTime: `${p.readTimeMinutes ?? 5} min read`,
           image: String(p.imageUrl),
         }));
-        if (mapped.length) setPosts(mapped);
+        setPosts(mapped);
       })
-      .catch(() => {})
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
-  return { posts, loading };
+  return { posts, loading, error };
 }
 
 export function useCmsPortfolio() {
-  const [projects, setProjects] = useState<PortfolioProject[]>(portfolioProjects);
+  const [projects, setProjects] = useState<PortfolioProject[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     publicApi
@@ -73,13 +74,13 @@ export function useCmsPortfolio() {
           image: String(p.imageUrl),
           tags: (p.tags as string[]) ?? [],
         }));
-        if (mapped.length) setProjects(mapped);
+        setProjects(mapped);
       })
-      .catch(() => {})
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
-  return { projects, loading };
+  return { projects, loading, error };
 }
 
 export interface CmsTeamMember {
@@ -93,39 +94,6 @@ export interface CmsTeamMember {
   isPlaceholder?: boolean;
   sortOrder: number;
 }
-
-const fallbackTeam: CmsTeamMember[] = [
-  {
-    id: 'rishi',
-    name: 'Rishi Sankhla',
-    role: 'Director & CTO',
-    bio: 'Leads technical strategy and engineering standards across client engagements.',
-    image: '/images/rishi.jpeg',
-    linkedin: 'https://www.linkedin.com/rishisankhla/',
-    isLeadership: true,
-    sortOrder: 1,
-  },
-  {
-    id: 'shakti',
-    name: 'Shakti Singh',
-    role: 'Director & CEO',
-    bio: 'Drives company vision, partnerships, and client relationships worldwide.',
-    image: '/images/shakti_2.png',
-    linkedin: 'https://www.linkedin.com/in/shakti-singh-1175a210b/',
-    isLeadership: true,
-    sortOrder: 2,
-  },
-  {
-    id: 'rohan',
-    name: 'Rohan Sankhla',
-    role: 'Director & COO',
-    bio: 'Oversees operations, delivery excellence, and scalable team processes.',
-    image: '/images/rohan.jpeg',
-    linkedin: 'https://www.linkedin.com/rohansankhla/',
-    isLeadership: true,
-    sortOrder: 3,
-  },
-];
 
 function mapTeamMembers(rows: Array<Record<string, unknown>>): CmsTeamMember[] {
   return rows
@@ -150,6 +118,7 @@ function mapTeamMembers(rows: Array<Record<string, unknown>>): CmsTeamMember[] {
 export function useCmsTeam() {
   const [members, setMembers] = useState<CmsTeamMember[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     publicApi
@@ -157,14 +126,12 @@ export function useCmsTeam() {
       .then((data) => {
         setMembers(mapTeamMembers(data.members as Array<Record<string, unknown>>));
       })
-      .catch(() => {
-        setMembers(fallbackTeam);
-      })
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
   const leadership = members.filter((m) => m.isLeadership);
   const extended = members.filter((m) => !m.isLeadership);
 
-  return { members, leadership, extended, loading };
+  return { members, leadership, extended, loading, error };
 }

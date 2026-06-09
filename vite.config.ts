@@ -82,9 +82,6 @@ export default defineConfig({
             if (id.includes('lucide-react')) {
               return 'vendor-icons';
             }
-            if (id.includes('emailjs')) {
-              return 'vendor-email';
-            }
             if (id.includes('react-hot-toast')) {
               return 'vendor-toast';
             }

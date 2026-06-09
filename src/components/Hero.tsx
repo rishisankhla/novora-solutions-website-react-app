@@ -4,24 +4,13 @@ import { ROUTES } from '../routes/paths';
 import { Button } from './ui/Button';
 import { STATS } from '../data/conversion';
 
-interface HeroProps {
-  scrollProgress?: number;
-}
-
 const PROOF_POINTS = [
   'Production-grade engineering',
   'AI & cloud-native delivery',
   '2–4 hour response time',
 ];
 
-export function Hero({ scrollProgress = 0 }: HeroProps) {
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const fade = prefersReducedMotion ? 1 : Math.max(0, 1 - scrollProgress * 1.1);
-  const lift = prefersReducedMotion ? 0 : scrollProgress * -48;
-
+export function Hero() {
   return (
     <section
       className="relative min-h-[100dvh] flex items-center overflow-hidden pt-20 pb-16 lg:pt-24"
@@ -50,13 +39,7 @@ export function Hero({ scrollProgress = 0 }: HeroProps) {
         aria-hidden
       />
 
-      <div
-        className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
-        style={{
-          opacity: fade,
-          transform: `translateY(${lift}px)`,
-        }}
-      >
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Editorial copy */}
           <div className="lg:col-span-7">

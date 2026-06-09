@@ -1,21 +1,17 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "novora-solutions-website-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:api": "npm run dev --prefix server",
+    "dev:api": "npm run dev --prefix ../novora-solutions-website-backend",
     "dev:all": "concurrently \"npm run dev:api\" \"npm run dev\"",
     "build": "vite build",
-    "build:api": "npm run build --prefix server",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "seed": "npm run seed --prefix server"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.1.0",
-    "@supabase/supabase-js": "^2.107.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

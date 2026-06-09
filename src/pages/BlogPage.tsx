@@ -8,7 +8,7 @@ import { PageHeader } from '../components/ui/PageHeader';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { Section } from '../components/ui/Section';
 import { NewsletterSubscription } from '../components/newsletter/NewsletterSubscription';
-import { blogPosts } from '../data/blog';
+import { PageLoader } from '../components/ui/PageLoader';
 import { useCmsBlog } from '../hooks/useCmsData';
 import { ROUTES, getBlogPostPath, getCanonicalUrl } from '../routes/paths';
 
@@ -21,15 +21,18 @@ function formatDate(dateStr: string) {
 }
 
 export function BlogPage() {
-  const { posts: blogPostsFromApi } = useCmsBlog();
-  const posts = blogPostsFromApi.length ? blogPostsFromApi : blogPosts;
+  const { posts, loading } = useCmsBlog();
+
+  if (loading) {
+    return <PageLoader />;
+  }
 
   if (posts.length === 0) {
     return (
       <>
         <PageHeader title="Insights & articles" subtitle="Expert perspectives on building digital products." breadcrumb="Blog" />
         <Section className="text-center">
-          <p className="text-ink-muted">Articles will appear here once published.</p>
+          <p className="text-ink-muted">Articles will appear here once published in the admin panel.</p>
         </Section>
       </>
     );

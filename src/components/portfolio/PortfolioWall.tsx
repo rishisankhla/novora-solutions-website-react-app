@@ -4,7 +4,7 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 import { Section } from '../ui/Section';
 import { Button } from '../ui/Button';
 import { ROUTES } from '../../routes/paths';
-import type { PortfolioProject } from '../../data/portfolio';
+import type { PortfolioProject } from '../../lib/types/cms';
 
 interface PortfolioWallProps {
   projects: PortfolioProject[];

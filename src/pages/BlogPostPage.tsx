@@ -9,7 +9,6 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { Button } from '../components/ui/Button';
 import { PageLoader } from '../components/ui/PageLoader';
 import { publicApi } from '../lib/api';
-import { blogPosts } from '../data/blog';
 import { ROUTES, getBlogPostPath, getCanonicalUrl } from '../routes/paths';
 
 interface BlogPostDetail {
@@ -61,17 +60,7 @@ export function BlogPostPage() {
           image: String(p.imageUrl),
         });
       })
-      .catch(() => {
-        const fallback = blogPosts.find((b) => b.slug === slug);
-        if (fallback) {
-          setPost({
-            ...fallback,
-            content: fallbackContent(fallback.excerpt),
-          });
-        } else {
-          setNotFound(true);
-        }
-      })
+      .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
   }, [slug]);
 
