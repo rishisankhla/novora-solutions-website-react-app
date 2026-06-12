@@ -66,7 +66,7 @@ export function BentoServices() {
     <Section
       eyebrow="Capabilities"
       title="Everything you need to ship — in one partner"
-      description="A focused studio model: strategy, design, engineering, and launch support without the agency overhead."
+      description="Engineering depth behind our consulting services — web, mobile, AI, and cloud delivery from one partner."
       align="center"
       className="bg-surface-soft relative overflow-hidden"
     >

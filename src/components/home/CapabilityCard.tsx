@@ -80,12 +80,21 @@ export function CapabilityCard({ item }: CapabilityCardProps) {
 
 export function CapabilitiesCta() {
   return (
-    <Link
-      to={ROUTES.services}
-      className="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 group"
-    >
-      Explore all services
-      <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-    </Link>
+    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+      <Link
+        to={ROUTES.services}
+        className="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 group"
+      >
+        Explore all services
+        <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+      </Link>
+      <Link
+        to={ROUTES.products}
+        className="inline-flex items-center gap-2 text-ink-muted font-semibold hover:text-brand-600 group"
+      >
+        View our products
+        <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+      </Link>
+    </div>
   );
 }

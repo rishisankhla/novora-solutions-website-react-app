@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { SOCIAL_LINKS } from '../data/social';
 
 interface SEOSchemaProps {
   pageType?: 'home' | 'about' | 'services' | 'contact' | 'blog';
@@ -26,11 +27,7 @@ export function SEOSchema({ pageType = 'home', articleData }: SEOSchemaProps) {
     "name": "Novora Solutions",
     "url": "https://novorasolutions.com",
     "logo": "https://novorasolutions.com/images/Novora-Logo.png",
-    "sameAs": [
-      "https://www.linkedin.com/company/novora-solutions",
-      "https://twitter.com/novorasolutions",
-      "https://github.com/novora-solutions"
-    ],
+    "sameAs": SOCIAL_LINKS.map((link) => link.href),
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "inquiry@novorasolutions.com",

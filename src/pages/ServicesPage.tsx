@@ -11,7 +11,7 @@ export function ServicesPage() {
     <>
       <SEOHead
         title="Our Services | Novora Solutions"
-        description="Web development, mobile apps, AI solutions, MVP builds, full-stack products, and cloud DevOps — end-to-end software services from Novora Solutions."
+        description="FlowBooksPro financial operations plus marketing, IT solutions, quotations, development, startup growth, and maintenance from Novora Solutions."
         canonicalUrl={getCanonicalUrl(ROUTES.services)}
       />
       <CanonicalUrl url={getCanonicalUrl(ROUTES.services)} />
@@ -26,7 +26,7 @@ export function ServicesPage() {
 
       <PageHeader
         title="Our Services"
-        subtitle="End-to-end software development — from strategy and design through launch, scale, and ongoing support."
+        subtitle="Consulting and engineering — marketing, IT, quotations, development, startup growth, and maintenance. See Products for FlowBooksPro."
         breadcrumb="Services"
       />
 

@@ -1,6 +1,7 @@
 import { Users } from 'lucide-react';
 import { ScrollReveal } from './ui/ScrollReveal';
 import { Section } from './ui/Section';
+import { CmsErrorState } from './ui/CmsErrorState';
 import { TeamMemberCard } from './team/TeamMemberCard';
 import { getTeamGridClass, getSkeletonCount } from './team/teamGrid';
 import { useCmsTeam } from '../hooks/useCmsData';
@@ -62,10 +63,9 @@ function TeamBlock({
 }
 
 export function Team() {
-  const { leadership, extended, members, loading } = useCmsTeam();
+  const { leadership, members, loading, error } = useCmsTeam();
   const leadershipMembers = leadership.length > 0 ? leadership : members.filter((m) => m.isLeadership);
-  const teamMembers = extended.length > 0 ? extended : members.filter((m) => !m.isLeadership);
-  const totalCount = leadershipMembers.length + teamMembers.length;
+  const totalCount = leadershipMembers.length;
 
   return (
     <Section className="bg-surface-soft relative overflow-hidden">
@@ -101,16 +101,11 @@ export function Team() {
           loading={loading}
         />
 
-        <TeamBlock
-          eyebrow="The team"
-          title="Builders, designers & operators"
-          description="Specialists across engineering, design, and delivery — scalable as we grow."
-          members={teamMembers}
-          variant="member"
-          loading={loading}
-        />
+        {error && (
+          <CmsErrorState title="Could not load team" message={error} className="my-8" />
+        )}
 
-        {!loading && leadershipMembers.length === 0 && teamMembers.length === 0 && (
+        {!loading && !error && leadershipMembers.length === 0 && (
           <p className="text-center text-ink-subtle py-16">
             Team profiles will appear here once published in the admin panel.
           </p>

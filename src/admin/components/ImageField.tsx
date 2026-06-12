@@ -12,7 +12,7 @@ interface ImageFieldProps {
   label: string;
   value: string;
   onChange: (url: string) => void;
-  folder: 'blog' | 'team' | 'portfolio' | 'general';
+  folder: 'team' | 'portfolio' | 'general';
   required?: boolean;
   hint?: string;
 }

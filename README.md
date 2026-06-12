@@ -13,10 +13,12 @@ The frontend talks to the backend exclusively via HTTP (`/api/v1`). No database 
 ```bash
 cp .env.example .env
 
-# Install & run frontend + sibling backend together
+# Install & run frontend + backend together (required for CMS content)
 npm install
 npm run dev:all
 ```
+
+> **Important:** `npm run dev` alone only starts the frontend. Team, blog, and portfolio need the API on port 5000 — use `npm run dev:all`.
 
 - Frontend: http://localhost:3000
 - API (sibling repo): http://localhost:5000

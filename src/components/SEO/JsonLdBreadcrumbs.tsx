@@ -15,7 +15,9 @@ interface JsonLdBreadcrumbsProps {
 const routeLabels: Record<string, string> = {
   '/': 'Home',
   '/team': 'Team',
+  '/services': 'Services',
   '/products': 'Products',
+  '/products/flowbookspro': 'FlowBooksPro',
   '/portfolio': 'Portfolio',
   '/blog': 'Blog',
   '/careers': 'Careers',

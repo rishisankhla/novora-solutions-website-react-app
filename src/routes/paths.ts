@@ -3,6 +3,7 @@ export const ROUTES = {
   team: '/team',
   services: '/services',
   products: '/products',
+  flowbooksPro: '/products/flowbookspro',
   portfolio: '/portfolio',
   blog: '/blog',
   careers: '/careers',

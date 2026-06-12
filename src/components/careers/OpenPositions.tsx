@@ -1,5 +1,6 @@
 import { Briefcase, MapPin, CheckCircle2 } from 'lucide-react';
 import { useCmsJobs } from '../../hooks/useCmsData';
+import { CmsErrorState } from '../ui/CmsErrorState';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { Section } from '../ui/Section';
 
@@ -9,7 +10,7 @@ interface OpenPositionsProps {
 }
 
 export function OpenPositions({ selectedPosition, onSelectPosition }: OpenPositionsProps) {
-  const { jobs } = useCmsJobs();
+  const { jobs, loading, error } = useCmsJobs();
 
   return (
     <Section
@@ -20,7 +21,11 @@ export function OpenPositions({ selectedPosition, onSelectPosition }: OpenPositi
       align="center"
       className="bg-white"
     >
-      {jobs.length === 0 ? (
+      {error ? (
+        <CmsErrorState title="Could not load open roles" message={error} />
+      ) : loading ? (
+        <p className="text-center text-ink-subtle py-12">Loading positions…</p>
+      ) : jobs.length === 0 ? (
         <p className="text-center text-ink-subtle py-12">
           No open positions at the moment. Check back soon or send a general application below.
         </p>

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { FormField, FormInput, FormTextarea } from './ui/FormField';
 import { Button } from './ui/Button';
 import { Section } from './ui/Section';
+import { SocialLinks } from './brand/SocialLinks';
 import { publicApi } from '../lib/api';
 
 interface FormData {
@@ -116,6 +117,13 @@ export function Contact() {
                   );
                 })}
               </ul>
+
+              <div className="mt-10 pt-8 border-t border-white/10">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300 mb-4">
+                  Follow us
+                </p>
+                <SocialLinks />
+              </div>
             </div>
           </div>
         </div>

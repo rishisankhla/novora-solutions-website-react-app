@@ -12,8 +12,6 @@ const ApplicationsPage = lazy(() => import('./pages/ApplicationsPage').then((m) 
 const JobsPage = lazy(() => import('./pages/JobsPage').then((m) => ({ default: m.JobsPage })));
 const TeamPage = lazy(() => import('./pages/TeamPage').then((m) => ({ default: m.TeamPage })));
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage').then((m) => ({ default: m.PortfolioPage })));
-const BlogPage = lazy(() => import('./pages/BlogPage').then((m) => ({ default: m.BlogPage })));
-const SiteContentPage = lazy(() => import('./pages/SiteContentPage').then((m) => ({ default: m.SiteContentPage })));
 const MediaPage = lazy(() => import('./pages/MediaPage').then((m) => ({ default: m.MediaPage })));
 const UsersPage = lazy(() => import('./pages/UsersPage').then((m) => ({ default: m.UsersPage })));
 const ActivityPage = lazy(() => import('./pages/ActivityPage').then((m) => ({ default: m.ActivityPage })));
@@ -41,8 +39,6 @@ export function AdminApp() {
               <Route path="jobs" element={<RoleGuard roles={['super_admin', 'admin', 'hr']}><JobsPage /></RoleGuard>} />
               <Route path="team" element={<RoleGuard roles={['super_admin', 'admin', 'editor']}><TeamPage /></RoleGuard>} />
               <Route path="portfolio" element={<RoleGuard roles={['super_admin', 'admin', 'editor']}><PortfolioPage /></RoleGuard>} />
-              <Route path="blog" element={<RoleGuard roles={['super_admin', 'admin', 'editor']}><BlogPage /></RoleGuard>} />
-              <Route path="content" element={<RoleGuard roles={['super_admin', 'admin', 'editor']}><SiteContentPage /></RoleGuard>} />
               <Route path="media" element={<RoleGuard roles={['super_admin', 'admin', 'editor']}><MediaPage /></RoleGuard>} />
               <Route path="activity" element={<ActivityPage />} />
               <Route path="users" element={<RoleGuard roles={['super_admin']}><UsersPage /></RoleGuard>} />

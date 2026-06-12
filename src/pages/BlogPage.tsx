@@ -9,6 +9,7 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { Section } from '../components/ui/Section';
 import { NewsletterSubscription } from '../components/newsletter/NewsletterSubscription';
 import { PageLoader } from '../components/ui/PageLoader';
+import { CmsErrorState } from '../components/ui/CmsErrorState';
 import { useCmsBlog } from '../hooks/useCmsData';
 import { ROUTES, getBlogPostPath, getCanonicalUrl } from '../routes/paths';
 
@@ -21,10 +22,21 @@ function formatDate(dateStr: string) {
 }
 
 export function BlogPage() {
-  const { posts, loading } = useCmsBlog();
+  const { posts, loading, error } = useCmsBlog();
 
   if (loading) {
     return <PageLoader />;
+  }
+
+  if (error) {
+    return (
+      <>
+        <PageHeader title="Insights & articles" subtitle="Expert perspectives on building digital products." breadcrumb="Blog" />
+        <Section>
+          <CmsErrorState title="Could not load articles" message={error} />
+        </Section>
+      </>
+    );
   }
 
   if (posts.length === 0) {

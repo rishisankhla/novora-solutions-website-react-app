@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { ROUTES } from '../routes/paths';
 import { Button } from './ui/Button';
-import { STATS } from '../data/conversion';
+import { HeroTrustPanel } from './home/HeroTrustPanel';
 
 const PROOF_POINTS = [
   'Production-grade engineering',
@@ -94,38 +93,12 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Bento proof panel — conversion + credibility at first glance */}
+          {/* Human-centered trust panel — partnership, not dashboards */}
           <div
             className="lg:col-span-5 animate-fade-up"
             style={{ animationDelay: '0.4s' }}
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-brand-500/10 to-indigo-500/10 rounded-4xl blur-2xl" aria-hidden />
-              <div className="relative grid grid-cols-2 gap-3 p-3 rounded-3xl bg-white/70 backdrop-blur-xl border border-white/80 shadow-elevated">
-                {STATS.map((stat, i) => (
-                  <div
-                    key={stat.label}
-                    className={`card-premium p-5 sm:p-6 ${i === 0 ? 'col-span-2 sm:col-span-1' : ''}`}
-                  >
-                    <p className="text-3xl sm:text-4xl font-bold text-ink tracking-tight">{stat.value}</p>
-                    <p className="text-sm text-ink-muted mt-1">{stat.label}</p>
-                  </div>
-                ))}
-                <div className="col-span-2 card-premium p-5 sm:p-6 bg-gradient-to-br from-brand-600 to-indigo-600 text-white border-0 shadow-glow">
-                  <p className="text-sm font-medium text-blue-100 mb-1">Ready when you are</p>
-                  <p className="text-lg font-semibold leading-snug mb-4">
-                    Book a free discovery call — no commitment, clear next steps.
-                  </p>
-                  <Link
-                    to={ROUTES.contact}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/15 hover:bg-white/25 rounded-lg px-4 py-2 transition-colors"
-                  >
-                    Talk to our team
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </div>
+            <HeroTrustPanel />
           </div>
         </div>
       </div>

@@ -14,9 +14,12 @@ export function Services() {
           <p className="eyebrow mb-3">Services</p>
           <h2 className="heading-display text-3xl sm:text-4xl mb-4">What We Offer</h2>
           <p className="text-base sm:text-lg text-ink-muted max-w-3xl mx-auto leading-relaxed">
-            At Novora Solutions, we bring innovative ideas to life through cutting-edge technology.
-            Whether you're a startup or an established business, we build scalable and high-performing
-            software tailored to your needs.
+            Marketing, IT consulting, quotations, custom development, startup growth, and long-term
+            maintenance — plus products like{' '}
+            <Link to={ROUTES.products} className="text-brand-600 font-medium hover:underline">
+              FlowBooksPro
+            </Link>{' '}
+            for financial operations. One partner from strategy through launch and beyond.
           </p>
         </ScrollReveal>
 

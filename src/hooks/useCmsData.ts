@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import { publicApi } from '../lib/api';
 import type { BlogPost, JobPosition, PortfolioProject } from '../lib/types/cms';
 
+function captureError(err: unknown, setError: (msg: string) => void) {
+  setError(err instanceof Error ? err.message : 'Failed to load content from API');
+}
+
 export function useCmsJobs() {
   const [jobs, setJobs] = useState<JobPosition[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     publicApi
@@ -21,7 +25,7 @@ export function useCmsJobs() {
         }));
         setJobs(mapped);
       })
-      .catch(() => setError(true))
+      .catch((err) => captureError(err, setError))
       .finally(() => setLoading(false));
   }, []);
 
@@ -31,7 +35,7 @@ export function useCmsJobs() {
 export function useCmsBlog() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     publicApi
@@ -50,7 +54,7 @@ export function useCmsBlog() {
         }));
         setPosts(mapped);
       })
-      .catch(() => setError(true))
+      .catch((err) => captureError(err, setError))
       .finally(() => setLoading(false));
   }, []);
 
@@ -60,7 +64,7 @@ export function useCmsBlog() {
 export function useCmsPortfolio() {
   const [projects, setProjects] = useState<PortfolioProject[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     publicApi
@@ -76,7 +80,7 @@ export function useCmsPortfolio() {
         }));
         setProjects(mapped);
       })
-      .catch(() => setError(true))
+      .catch((err) => captureError(err, setError))
       .finally(() => setLoading(false));
   }, []);
 
@@ -118,7 +122,7 @@ function mapTeamMembers(rows: Array<Record<string, unknown>>): CmsTeamMember[] {
 export function useCmsTeam() {
   const [members, setMembers] = useState<CmsTeamMember[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     publicApi
@@ -126,7 +130,7 @@ export function useCmsTeam() {
       .then((data) => {
         setMembers(mapTeamMembers(data.members as Array<Record<string, unknown>>));
       })
-      .catch(() => setError(true))
+      .catch((err) => captureError(err, setError))
       .finally(() => setLoading(false));
   }, []);
 

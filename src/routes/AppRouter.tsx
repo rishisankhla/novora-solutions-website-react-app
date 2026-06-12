@@ -9,6 +9,12 @@ const TeamPage = lazy(() => import('../pages/TeamPage').then((m) => ({ default: 
 const ServicesPage = lazy(() =>
   import('../pages/ServicesPage').then((m) => ({ default: m.ServicesPage }))
 );
+const ProductsPage = lazy(() =>
+  import('../pages/ProductsPage').then((m) => ({ default: m.ProductsPage }))
+);
+const FlowBooksProPage = lazy(() =>
+  import('../pages/FlowBooksProPage').then((m) => ({ default: m.FlowBooksProPage }))
+);
 const PortfolioPage = lazy(() =>
   import('../pages/PortfolioPage').then((m) => ({ default: m.PortfolioPage }))
 );
@@ -71,7 +77,19 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.products.slice(1),
-        element: <Navigate to={ROUTES.services} replace />,
+        element: (
+          <SuspenseWrapper>
+            <ProductsPage />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: 'products/flowbookspro',
+        element: (
+          <SuspenseWrapper>
+            <FlowBooksProPage />
+          </SuspenseWrapper>
+        ),
       },
       {
         path: ROUTES.portfolio.slice(1),

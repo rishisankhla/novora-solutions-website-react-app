@@ -26,7 +26,7 @@ export function DashboardPage() {
         <StatCard label="New Submissions" value={stats.newSubmissions} accent="blue" />
         <StatCard label="New Applications" value={stats.newApplications} accent="green" />
         <StatCard label="Open Positions" value={stats.openJobs} accent="amber" />
-        <StatCard label="Published Posts" value={stats.publishedPosts} accent="purple" />
+        <StatCard label="Team Members" value={stats.teamCount} accent="purple" />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

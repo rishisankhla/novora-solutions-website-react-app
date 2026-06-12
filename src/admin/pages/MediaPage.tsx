@@ -69,7 +69,6 @@ export function MediaPage() {
           <div className="flex flex-wrap items-center gap-2">
             <AdminSelect value={folder} onChange={(e) => setFolder(e.target.value)} className="w-36">
               <option value="general">General</option>
-              <option value="blog">Blog</option>
               <option value="team">Team</option>
               <option value="portfolio">Portfolio</option>
             </AdminSelect>
@@ -88,7 +87,7 @@ export function MediaPage() {
         <AdminCard className="p-12 text-center">
           <ImagePlus className="h-10 w-10 text-slate-300 mx-auto mb-3" />
           <p className="text-slate-600 font-medium">No media yet</p>
-          <p className="text-sm text-slate-500 mt-1">Upload images from here or from blog, team, and portfolio forms.</p>
+          <p className="text-sm text-slate-500 mt-1">Upload images from here or from team and portfolio forms.</p>
         </AdminCard>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">

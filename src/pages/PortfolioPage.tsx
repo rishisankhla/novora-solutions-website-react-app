@@ -5,15 +5,31 @@ import { JsonLdBreadcrumbs } from '../components/SEO/JsonLdBreadcrumbs';
 import { PageHeader } from '../components/ui/PageHeader';
 import { PortfolioWall } from '../components/portfolio/PortfolioWall';
 import { PageLoader } from '../components/ui/PageLoader';
+import { CmsErrorState } from '../components/ui/CmsErrorState';
 import { Section } from '../components/ui/Section';
 import { useCmsPortfolio } from '../hooks/useCmsData';
 import { getCanonicalUrl } from '../routes/paths';
 
 export function PortfolioPage() {
-  const { projects, loading } = useCmsPortfolio();
+  const { projects, loading, error } = useCmsPortfolio();
 
   if (loading) {
     return <PageLoader />;
+  }
+
+  if (error) {
+    return (
+      <>
+        <PageHeader
+          title="Work we're proud of"
+          subtitle="Real projects across web, mobile, AI, and cloud — built with the same rigor we'd apply to yours."
+          breadcrumb="Portfolio"
+        />
+        <Section>
+          <CmsErrorState title="Could not load portfolio" message={error} />
+        </Section>
+      </>
+    );
   }
 
   return (

@@ -1,16 +1,10 @@
 import { Link } from 'react-router-dom';
-import {
-  Linkedin,
-  Mail,
-  Clock,
-  MessageSquare,
-  Globe2,
-  ArrowRight,
-} from 'lucide-react';
+import { Mail, Clock, MessageSquare, Globe2, ArrowRight } from 'lucide-react';
 import { NewsletterSubscription } from './newsletter/NewsletterSubscription';
 import { FOOTER_NAV_ITEMS } from '../data/nav';
 import { ROUTES } from '../routes/paths';
 import { Logo } from './brand/Logo';
+import { SocialLinks } from './brand/SocialLinks';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,30 +17,21 @@ export function Footer() {
           {/* Company Info */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="mb-6">
-              <Logo variant="light" />
+              <Logo size="lg" />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed mb-6 max-w-xs">
               Empowering businesses through innovative technology solutions. We transform ideas into
               digital reality with cutting-edge development and AI-powered solutions.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="https://www.linkedin.com/company/novora-solutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:inquiry@novorasolutions.com"
-                className="text-gray-400 hover:text-white transition-colors"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
+            <SocialLinks className="mb-4" />
+            <a
+              href="mailto:inquiry@novorasolutions.com"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+              aria-label="Email"
+            >
+              <Mail className="h-5 w-5" />
+              inquiry@novorasolutions.com
+            </a>
           </div>
 
           {/* Quick Links */}

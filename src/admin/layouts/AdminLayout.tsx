@@ -5,8 +5,6 @@ import {
   Briefcase,
   Users,
   FolderKanban,
-  FileText,
-  Globe,
   Image,
   Activity,
   LogOut,
@@ -17,6 +15,7 @@ import {
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import type { UserRole } from '../../lib/api';
+import { Logo } from '../../components/brand/Logo';
 
 const navItems: { to: string; label: string; icon: typeof LayoutDashboard; end?: boolean; roles?: UserRole[] }[] = [
   { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, end: true },
@@ -25,8 +24,6 @@ const navItems: { to: string; label: string; icon: typeof LayoutDashboard; end?:
   { to: '/admin/jobs', label: 'Job Positions', icon: Briefcase, roles: ['super_admin', 'admin', 'hr'] },
   { to: '/admin/team', label: 'Team', icon: Users, roles: ['super_admin', 'admin', 'editor'] },
   { to: '/admin/portfolio', label: 'Portfolio', icon: FolderKanban, roles: ['super_admin', 'admin', 'editor'] },
-  { to: '/admin/blog', label: 'Blog', icon: FileText, roles: ['super_admin', 'admin', 'editor'] },
-  { to: '/admin/content', label: 'Site Content', icon: Globe, roles: ['super_admin', 'admin', 'editor'] },
   { to: '/admin/media', label: 'Media', icon: Image, roles: ['super_admin', 'admin', 'editor'] },
   { to: '/admin/activity', label: 'Activity', icon: Activity },
   { to: '/admin/users', label: 'Users', icon: UserCog, roles: ['super_admin'] },
@@ -60,8 +57,8 @@ export function AdminLayout() {
       >
         <div className="p-5 border-b border-slate-800 flex items-center justify-between">
           <div>
-            <p className="font-bold text-lg">Novora</p>
-            <p className="text-xs text-slate-400">Admin Panel</p>
+            <Logo linkToHome={false} size="sm" className="brightness-0 invert" />
+            <p className="text-xs text-slate-400 mt-2">Admin Panel</p>
           </div>
           <button className="lg:hidden p-1" onClick={() => setSidebarOpen(false)}>
             <X className="h-5 w-5" />

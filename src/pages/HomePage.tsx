@@ -8,6 +8,7 @@ import { StatsSection } from '../components/conversion/StatsSection';
 import { Testimonials } from '../components/conversion/Testimonials';
 import { FAQSection } from '../components/conversion/FAQSection';
 import { BentoServices } from '../components/home/BentoServices';
+import { FlowBooksProShowcase } from '../components/products/FlowBooksProShowcase';
 import { ProcessSection } from '../components/home/ProcessSection';
 import { CtaBanner } from '../components/home/CtaBanner';
 import { Vision } from '../components/about/Vision';
@@ -28,6 +29,8 @@ export function HomePage() {
       <Hero />
 
       <TrustBar />
+
+      <FlowBooksProShowcase mode="teaser" />
 
       <BentoServices />
 

@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 import { AdminButton, AdminInput, AdminCard } from '../components/ui';
+import { Logo } from '../../components/brand/Logo';
 
 export function LoginPage() {
   const { user, login } = useAuth();
@@ -29,7 +30,8 @@ export function LoginPage() {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
       <AdminCard className="w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-900">Novora Admin</h1>
+          <Logo linkToHome={false} size="lg" className="mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-slate-900">Admin</h1>
           <p className="text-slate-500 text-sm mt-1">Sign in to manage your website</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
