@@ -25,7 +25,7 @@ function App() {
       const progress = Math.min(scrollPosition / windowHeight, 1);
       setScrollProgress(progress);
       
-      // Determine current section for SEO schema
+      // Determine currennt section for SEO schema
       const sections = ['services', 'about', 'team', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
