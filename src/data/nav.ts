@@ -7,6 +7,7 @@ export interface NavItem {
 
 export const NAV_ITEMS: NavItem[] = [
   { to: ROUTES.home, label: 'Home' },
+  { to: ROUTES.about, label: 'About Us' },
   { to: ROUTES.team, label: 'Team' },
   { to: ROUTES.services, label: 'Services' },
   { to: ROUTES.products, label: 'Products' },

@@ -6,7 +6,7 @@ import { ROUTES } from '../routes/paths';
 
 export function Services() {
   return (
-    <section className="py-16 sm:py-24 relative bg-surface-soft">
+    <section className="pt-6 sm:pt-8 pb-16 sm:pb-24 relative bg-surface-soft">
       <div className="absolute inset-0 bg-mesh-hero opacity-40 pointer-events-none" aria-hidden />
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -14,12 +14,8 @@ export function Services() {
           <p className="eyebrow mb-3">Services</p>
           <h2 className="heading-display text-3xl sm:text-4xl mb-4">What We Offer</h2>
           <p className="text-base sm:text-lg text-ink-muted max-w-3xl mx-auto leading-relaxed">
-            Marketing, IT consulting, quotations, custom development, startup growth, and long-term
-            maintenance — plus products like{' '}
-            <Link to={ROUTES.products} className="text-brand-600 font-medium hover:underline">
-              FlowBooksPro
-            </Link>{' '}
-            for financial operations. One partner from strategy through launch and beyond.
+            Marketing, IT consulting, custom development, AI, cloud, startup growth, and long-term
+            maintenance — one partner from strategy through launch and beyond.
           </p>
         </ScrollReveal>
 

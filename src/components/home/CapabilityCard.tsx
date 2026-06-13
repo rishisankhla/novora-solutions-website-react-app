@@ -10,6 +10,7 @@ export interface CapabilityItem {
   description: string;
   span: string;
   featured?: boolean;
+  previewLarge?: boolean;
   preview: CapabilityPreviewKey;
   tags: string[];
   accent: string;
@@ -21,22 +22,35 @@ interface CapabilityCardProps {
 
 export function CapabilityCard({ item }: CapabilityCardProps) {
   const Icon = item.icon;
+  const isFeatured = item.featured;
 
   return (
     <article
       className={`group relative h-full flex flex-col overflow-hidden rounded-2xl border border-surface-border/80 bg-white shadow-card transition-all duration-500 hover:shadow-elevated hover:-translate-y-1 hover:border-brand-200/70 ${item.span}`}
     >
       {/* Dribbble-style canvas area */}
-      <div className={`relative overflow-hidden ${item.featured ? 'p-4 sm:p-5 pb-0' : 'p-3 sm:p-4 pb-0'}`}>
+      <div
+        className={`relative overflow-hidden ${
+          isFeatured ? 'flex-1 min-h-0 p-4 sm:p-5 pb-0' : 'p-3 sm:p-4 pb-0'
+        }`}
+      >
         <div
           className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${item.accent}`}
           aria-hidden
         />
-        <CapabilityPreview type={item.preview} large={item.featured} />
+        <CapabilityPreview
+          type={item.preview}
+          large={item.featured || item.previewLarge}
+          fill={isFeatured}
+        />
       </div>
 
       {/* Content footer — Figma panel style */}
-      <div className="relative flex flex-col flex-1 p-5 sm:p-6 pt-4 border-t border-surface-border/50 bg-gradient-to-b from-white to-surface-soft/30">
+      <div
+        className={`relative flex flex-col p-5 sm:p-6 pt-4 border-t border-surface-border/50 bg-gradient-to-b from-white to-surface-soft/30 ${
+          isFeatured ? 'shrink-0' : 'flex-1'
+        }`}
+      >
         <div className="flex items-start justify-between gap-3 mb-3">
           <div className="flex items-center gap-3 min-w-0">
             <div className="shrink-0 p-2 rounded-xl bg-ink text-white shadow-soft group-hover:scale-105 transition-transform duration-300">
@@ -51,9 +65,15 @@ export function CapabilityCard({ item }: CapabilityCardProps) {
           </span>
         </div>
 
-        <p className="text-sm text-ink-muted leading-relaxed flex-grow mb-4">{item.description}</p>
+        <p
+          className={`text-sm text-ink-muted leading-relaxed ${
+            isFeatured ? 'mb-3' : 'flex-grow mb-4'
+          }`}
+        >
+          {item.description}
+        </p>
 
-        <div className="flex flex-wrap gap-1.5 mt-auto">
+        <div className={`flex flex-wrap gap-1.5 ${isFeatured ? '' : 'mt-auto'}`}>
           {item.tags.map((tag) => (
             <span
               key={tag}

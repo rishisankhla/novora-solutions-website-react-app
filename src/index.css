@@ -205,6 +205,11 @@ html.js .reveal:not(.revealed) {
   transform: none;
 }
 
+/* UI screenshots — cap container width; avoid aggressive pixelated rendering on photos */
+.media-crisp {
+  image-rendering: auto;
+}
+
 /* Page transitions */
 .page-transition {
   animation-duration: 0.25s;

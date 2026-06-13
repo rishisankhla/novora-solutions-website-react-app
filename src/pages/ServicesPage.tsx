@@ -3,6 +3,7 @@ import { SEOSchema } from '../seo/SEOSchema';
 import { CanonicalUrl } from '../components/SEO/CanonicalUrl';
 import { JsonLdBreadcrumbs } from '../components/SEO/JsonLdBreadcrumbs';
 import { PageHeader } from '../components/ui/PageHeader';
+import { IrisRentsShowcase } from '../components/services/IrisRentsShowcase';
 import { Services } from '../components/Services';
 import { getCanonicalUrl, ROUTES } from '../routes/paths';
 
@@ -11,7 +12,7 @@ export function ServicesPage() {
     <>
       <SEOHead
         title="Our Services | Novora Solutions"
-        description="FlowBooksPro financial operations plus marketing, IT solutions, quotations, development, startup growth, and maintenance from Novora Solutions."
+        description="Marketing, IT solutions, custom development, AI, cloud, startup growth, and maintenance from Novora Solutions."
         canonicalUrl={getCanonicalUrl(ROUTES.services)}
       />
       <CanonicalUrl url={getCanonicalUrl(ROUTES.services)} />
@@ -26,9 +27,11 @@ export function ServicesPage() {
 
       <PageHeader
         title="Our Services"
-        subtitle="Consulting and engineering — marketing, IT, quotations, development, startup growth, and maintenance. See Products for FlowBooksPro."
+        subtitle="Consulting and engineering — marketing, IT, development, AI, cloud, startup growth, and maintenance."
         breadcrumb="Services"
       />
+
+      <IrisRentsShowcase mode="top" />
 
       <Services />
     </>

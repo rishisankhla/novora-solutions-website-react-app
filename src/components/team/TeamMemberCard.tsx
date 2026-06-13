@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Linkedin, ArrowUpRight } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
-import type { CmsTeamMember } from '../../hooks/useCmsData';
+import type { TeamMember } from '../../data/team';
 
 type Variant = 'leadership' | 'member';
 
 interface TeamMemberCardProps {
-  member: CmsTeamMember;
+  member: TeamMember;
   index: number;
   variant?: Variant;
 }
@@ -43,13 +43,8 @@ export function TeamMemberCard({ member, index, variant = 'member' }: TeamMember
   const [imageError, setImageError] = useState(false);
   const sizes = sizeMap[variant];
   const linkedin = normalizeLinkedIn(member.linkedin);
-  const isPlaceholder = member.isPlaceholder;
   const showPhoto = Boolean(member.image) && !imageError && !member.image.includes('Novora-Logo');
-  const bio =
-    member.bio ||
-    (isPlaceholder
-      ? 'Profile coming soon — edit this teammate in the admin panel.'
-      : undefined);
+  const bio = member.bio;
 
   return (
     <ScrollReveal delay={index * 70}>
@@ -93,11 +88,6 @@ export function TeamMemberCard({ member, index, variant = 'member' }: TeamMember
             </span>
           )}
 
-          {isPlaceholder && (
-            <span className="absolute top-0 right-0 text-[10px] font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
-              Placeholder
-            </span>
-          )}
         </div>
 
         <div className="flex flex-col flex-1 w-full max-w-[16rem] sm:max-w-[18rem] mx-auto px-1">

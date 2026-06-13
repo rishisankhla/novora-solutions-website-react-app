@@ -30,10 +30,10 @@ export function Vision() {
           We build scalable, high-performance products that solve real problems.
         </p>
         <Link
-          to={ROUTES.team}
+          to={ROUTES.about}
           className="inline-flex items-center gap-2 mt-8 text-brand-600 font-semibold hover:text-brand-700 group"
         >
-          Meet the team behind the work
+          Read our full story
           <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
         </Link>
       </div>
@@ -74,8 +74,8 @@ export function Vision() {
               <p className="text-xs text-ink-subtle mt-0.5">Projects</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-ink">98%</p>
-              <p className="text-xs text-ink-subtle mt-0.5">Satisfaction</p>
+              <p className="text-2xl font-bold text-ink">40+</p>
+              <p className="text-xs text-ink-subtle mt-0.5">Partnerships</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-ink">24/7</p>

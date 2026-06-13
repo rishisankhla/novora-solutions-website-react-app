@@ -5,6 +5,9 @@ import { PageLoader } from '../components/ui/PageLoader';
 import { ROUTES } from './paths';
 
 const HomePage = lazy(() => import('../pages/HomePage').then((m) => ({ default: m.HomePage })));
+const AboutPage = lazy(() =>
+  import('../pages/AboutPage').then((m) => ({ default: m.AboutPage }))
+);
 const TeamPage = lazy(() => import('../pages/TeamPage').then((m) => ({ default: m.TeamPage })));
 const ServicesPage = lazy(() =>
   import('../pages/ServicesPage').then((m) => ({ default: m.ServicesPage }))
@@ -56,6 +59,14 @@ const router = createBrowserRouter([
         element: (
           <SuspenseWrapper>
             <HomePage />
+          </SuspenseWrapper>
+        ),
+      },
+      {
+        path: ROUTES.about.slice(1),
+        element: (
+          <SuspenseWrapper>
+            <AboutPage />
           </SuspenseWrapper>
         ),
       },

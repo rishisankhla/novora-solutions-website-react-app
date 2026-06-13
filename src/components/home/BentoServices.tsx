@@ -1,4 +1,4 @@
-import { Globe, Smartphone, Brain, Rocket, Code2, Cloud } from 'lucide-react';
+import { Globe, Smartphone, Brain, Rocket, Code2, Cloud, Megaphone, Share2, BarChart3 } from 'lucide-react';
 import { ScrollReveal } from '../ui/ScrollReveal';
 import { Section } from '../ui/Section';
 import { CapabilityCard, CapabilitiesCta, type CapabilityItem } from './CapabilityCard';
@@ -8,9 +8,9 @@ const BENTO: CapabilityItem[] = [
     icon: Globe,
     title: 'Web Applications',
     description: 'SaaS platforms, dashboards, and customer portals engineered for scale.',
-    span: 'lg:col-span-2 lg:row-span-2',
-    featured: true,
+    span: 'lg:col-span-2',
     preview: 'web',
+    previewLarge: true,
     accent: 'from-brand-400/30 to-indigo-500/20',
     tags: ['React', 'Next.js', 'Node'],
   },
@@ -31,6 +31,34 @@ const BENTO: CapabilityItem[] = [
     preview: 'mobile',
     accent: 'from-sky-400/30 to-brand-500/20',
     tags: ['React Native'],
+  },
+  {
+    icon: Megaphone,
+    title: 'Google Ads',
+    description: 'Search, display, and retargeting with clear ROI tracking.',
+    span: '',
+    preview: 'googleAds',
+    accent: 'from-amber-400/30 to-yellow-500/20',
+    tags: ['PPC', 'Analytics'],
+  },
+  {
+    icon: Share2,
+    title: 'Social Media',
+    description: 'Content, community, and paid social across major platforms.',
+    span: '',
+    preview: 'socialMedia',
+    accent: 'from-pink-400/30 to-rose-500/20',
+    tags: ['LinkedIn', 'Meta'],
+  },
+  {
+    icon: BarChart3,
+    title: 'Marketing — All in One',
+    description: 'SEO, ads, social, and content in one growth engine — strategy to reporting.',
+    span: 'lg:col-span-2',
+    preview: 'marketing',
+    previewLarge: true,
+    accent: 'from-rose-400/25 via-amber-400/15 to-brand-500/20',
+    tags: ['GTM', 'SEO', 'Paid media'],
   },
   {
     icon: Rocket,
@@ -82,7 +110,7 @@ export function BentoServices() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 relative auto-rows-fr">
         {BENTO.map((item, index) => (
-          <ScrollReveal key={item.title} delay={index * 60} className={item.span}>
+          <ScrollReveal key={item.title} delay={index * 60} className={`${item.span} h-full`}>
             <CapabilityCard item={item} />
           </ScrollReveal>
         ))}

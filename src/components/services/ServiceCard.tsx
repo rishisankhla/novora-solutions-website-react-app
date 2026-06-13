@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Megaphone,
   Server,
-  FileSearch,
   Code2,
   Rocket,
   Wrench,
@@ -22,7 +21,6 @@ export interface ServiceCardProps {
 const ICONS = {
   megaphone: Megaphone,
   server: Server,
-  fileSearch: FileSearch,
   code: Code2,
   rocket: Rocket,
   wrench: Wrench,

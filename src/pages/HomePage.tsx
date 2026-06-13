@@ -7,11 +7,9 @@ import { TrustBar } from '../components/conversion/TrustBar';
 import { StatsSection } from '../components/conversion/StatsSection';
 import { Testimonials } from '../components/conversion/Testimonials';
 import { FAQSection } from '../components/conversion/FAQSection';
-import { BentoServices } from '../components/home/BentoServices';
-import { FlowBooksProShowcase } from '../components/products/FlowBooksProShowcase';
 import { ProcessSection } from '../components/home/ProcessSection';
 import { CtaBanner } from '../components/home/CtaBanner';
-import { Vision } from '../components/about/Vision';
+import { AboutTeaser } from '../components/about/AboutTeaser';
 import { getCanonicalUrl } from '../routes/paths';
 
 export function HomePage() {
@@ -30,17 +28,13 @@ export function HomePage() {
 
       <TrustBar />
 
-      <FlowBooksProShowcase mode="teaser" />
-
-      <BentoServices />
-
       <ProcessSection />
 
       <StatsSection />
 
       <section className="py-20 sm:py-28 bg-surface-soft">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Vision />
+          <AboutTeaser />
         </div>
       </section>
 

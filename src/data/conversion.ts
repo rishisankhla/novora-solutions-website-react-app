@@ -10,7 +10,7 @@ export const TRUST_LOGOS = [
 
 export const STATS = [
   { value: '50+', label: 'Products shipped' },
-  { value: '98%', label: 'Client satisfaction' },
+  { value: '40+', label: 'Long-term partnerships' },
   { value: '<4h', label: 'Avg. response time' },
   { value: '6–12wk', label: 'Typical MVP timeline' },
 ];

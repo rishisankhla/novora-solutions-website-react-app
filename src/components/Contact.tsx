@@ -76,11 +76,11 @@ export function Contact() {
 
   return (
     <Section className="bg-surface-soft">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-        <div className="lg:col-span-2">
-          <div className="relative overflow-hidden rounded-4xl bg-ink text-white p-8 sm:p-10 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 lg:items-stretch">
+        <div className="lg:col-span-2 flex">
+          <div className="relative overflow-hidden rounded-4xl bg-ink text-white p-8 sm:p-10 w-full flex flex-col min-h-full">
             <div className="absolute inset-0 bg-mesh-dark opacity-80" aria-hidden />
-            <div className="relative">
+            <div className="relative flex flex-col flex-1">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300 mb-4">
                 Why reach out
               </p>
@@ -118,7 +118,7 @@ export function Contact() {
                 })}
               </ul>
 
-              <div className="mt-10 pt-8 border-t border-white/10">
+              <div className="mt-auto pt-8 border-t border-white/10">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300 mb-4">
                   Follow us
                 </p>
@@ -128,10 +128,10 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 flex">
           <form
             onSubmit={handleSubmit}
-            className="card-premium p-6 sm:p-8 lg:p-10 space-y-6"
+            className="card-premium p-6 sm:p-8 lg:p-10 space-y-6 w-full flex flex-col min-h-full"
             noValidate
           >
             <input
@@ -187,7 +187,7 @@ export function Contact() {
               />
             </FormField>
 
-            <Button type="submit" className="w-full sm:w-auto" disabled={isSubmitting}>
+            <Button type="submit" className="w-full sm:w-auto mt-auto" disabled={isSubmitting}>
               {isSubmitting ? 'Sending…' : 'Send message'}
               {!isSubmitting && <ArrowRight className="h-4 w-4" />}
             </Button>

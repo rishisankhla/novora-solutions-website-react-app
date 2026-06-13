@@ -7,7 +7,6 @@ export interface ServiceDefinition extends Omit<ServiceCardProps, 'icon'> {
   iconKey:
     | 'megaphone'
     | 'server'
-    | 'fileSearch'
     | 'code'
     | 'rocket'
     | 'wrench'
@@ -45,20 +44,6 @@ export const NOVORA_SERVICES: ServiceDefinition[] = [
     techStack: ['Microsoft 365', 'AWS', 'Azure', 'Okta', 'Intune'],
   },
   {
-    id: 'quotations',
-    iconKey: 'fileSearch',
-    title: 'Quotation & Proposal Support',
-    description:
-      'Structured discovery, scoping, and proposal production so you respond to RFPs and client briefs with speed, clarity, and winning detail.',
-    features: [
-      'Requirements workshops and effort / cost estimation',
-      'Technical solution outlines and milestone-based quotes',
-      'RFP response support with architecture diagrams',
-      'SOW templates, assumptions, and risk registers',
-    ],
-    techStack: ['Notion', 'Figma', 'Excel', 'Custom portals'],
-  },
-  {
     id: 'development',
     iconKey: 'code',
     title: 'Custom Software Development',
@@ -66,6 +51,7 @@ export const NOVORA_SERVICES: ServiceDefinition[] = [
       'Web, mobile, and SaaS products engineered for reliability — from greenfield builds to modernizing legacy systems your business depends on.',
     features: [
       'Full-stack applications, APIs, and admin dashboards',
+      'Marketplace & listing platforms (see IRIS at irisrents.com)',
       'CPA, fintech, and operations platforms (see FlowBooksPro)',
       'QA, CI/CD, and production-grade release practices',
       'Integrations with QuickBooks, Xero, payment, and HR systems',
