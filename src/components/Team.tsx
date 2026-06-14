@@ -3,11 +3,12 @@ import { ScrollReveal } from './ui/ScrollReveal';
 import { Section } from './ui/Section';
 import { TeamMemberCard } from './team/TeamMemberCard';
 import { getTeamGridClass } from './team/teamGrid';
-import { TEAM_LEADERSHIP } from '../data/team';
+import { TEAM_EXTENDED, TEAM_LEADERSHIP } from '../data/team';
 
 export function Team() {
   const leadershipMembers = TEAM_LEADERSHIP;
-  const totalCount = leadershipMembers.length;
+  const extendedMembers = TEAM_EXTENDED;
+  const totalCount = leadershipMembers.length + extendedMembers.length;
 
   return (
     <Section className="bg-surface-soft relative overflow-hidden">
@@ -47,6 +48,26 @@ export function Team() {
             <TeamMemberCard key={member.id} member={member} index={index} variant="leadership" />
           ))}
         </div>
+
+        {extendedMembers.length > 0 && (
+          <>
+            <header className="text-center mb-12 sm:mb-16 max-w-2xl mx-auto mt-20 sm:mt-28">
+              <p className="eyebrow mb-3">Engineering</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-ink tracking-tight mb-4 text-balance">
+                Builders on the ground
+              </h2>
+              <p className="text-lg text-ink-muted leading-relaxed">
+                Specialists who turn architecture into shipped software — from chain to cloud.
+              </p>
+            </header>
+
+            <div className={getTeamGridClass(extendedMembers.length, 'member')}>
+              {extendedMembers.map((member, index) => (
+                <TeamMemberCard key={member.id} member={member} index={index} variant="member" />
+              ))}
+            </div>
+          </>
+        )}
 
         <ScrollReveal className="text-center mt-16 sm:mt-20 max-w-2xl mx-auto">
           <p className="text-lg font-semibold text-brand-600 leading-relaxed">
