@@ -5,5 +5,7 @@ http://novorasolutions.com/* https://novorasolutions.com/:splat 301!
 http://www.novorasolutions.com/* https://novorasolutions.com/:splat 301!
 https://www.novorasolutions.com/* https://novorasolutions.com/:splat 301!
 
-# SPA routing - send all routes to index.html
+# SPA routing - send app routes to index.html (static files served first)
+/images/*  /images/:splat  200
+/assets/*  /assets/:splat  200
 /*    /index.html   200

@@ -1,3 +1,6 @@
+import akashPhoto from '../assets/team/akash-ramanni.jpeg';
+import jayramPhoto from '../assets/team/jayram.jpeg';
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -46,7 +49,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Akash Ramanni',
     role: 'Blockchain Engineer',
     bio: 'Designs and ships secure smart contracts, Web3 integrations, and decentralized application architecture.',
-    image: '/images/team/akash-ramanni.jpeg',
+    image: akashPhoto,
     linkedin: 'https://www.linkedin.com/in/akash-ramanni/',
     isLeadership: true,
     sortOrder: 4,
@@ -56,7 +59,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: 'Jayram S',
     role: 'Full Stack Developer',
     bio: 'Builds end-to-end product features across modern React frontends and scalable Node.js APIs.',
-    image: '/images/team/jayram.jpeg',
+    image: jayramPhoto,
     linkedin: 'https://www.linkedin.com/in/jayram-s-6b1865293/',
     isLeadership: true,
     sortOrder: 5,
