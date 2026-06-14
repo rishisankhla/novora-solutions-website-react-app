@@ -7,6 +7,7 @@ export function getTeamGridClass(count: number, variant: 'leadership' | 'member'
   if (variant === 'leadership') {
     if (count === 1) return `${base} grid-cols-1 max-w-xs mx-auto`;
     if (count === 2) return `${base} grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto`;
+    if (count === 5) return `${base} grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto`;
     return `${base} grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto`;
   }
 

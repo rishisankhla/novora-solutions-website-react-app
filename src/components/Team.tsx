@@ -39,7 +39,8 @@ export function Team() {
             Direction & standards
           </h2>
           <p className="text-lg text-ink-muted leading-relaxed">
-            The leaders who set strategy, quality, and how we show up for every client.
+            Directors and technical leads who set strategy, quality, and how we show up for every
+            client.
           </p>
         </header>
 
