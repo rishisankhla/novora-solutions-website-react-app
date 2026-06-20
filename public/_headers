@@ -7,7 +7,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://images.unsplash.com https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://novorasolutions.com http://localhost:5000 http://localhost:3000; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https://images.unsplash.com https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://novorasolutions.com https://www.novorasolutions.com https://novora-solutions-website-backend.onrender.com http://localhost:5000 http://127.0.0.1:5000 http://localhost:3000 http://127.0.0.1:3000; frame-ancestors 'self'; base-uri 'self'; form-action 'self'
 
 # HTML files - shorter cache, network-first strategy
 /*.html
