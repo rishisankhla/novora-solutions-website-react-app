@@ -5,7 +5,9 @@ http://novorasolutions.com/* https://novorasolutions.com/:splat 301!
 http://www.novorasolutions.com/* https://novorasolutions.com/:splat 301!
 https://www.novorasolutions.com/* https://novorasolutions.com/:splat 301!
 
-# SPA routing - send app routes to index.html (static files served first)
+# SPA routing - static assets and API proxy first
+/api/*  https://novora-solutions-website-backend.onrender.com/api/:splat  200
+/uploads/*  https://novora-solutions-website-backend.onrender.com/uploads/:splat  200
 /images/*  /images/:splat  200
 /assets/*  /assets/:splat  200
 /*    /index.html   200

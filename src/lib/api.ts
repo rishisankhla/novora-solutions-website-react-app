@@ -21,7 +21,11 @@ async function request<T>(
       ...options,
     });
   } catch {
-    throw new Error('Cannot reach API server. Start it with npm run dev:api');
+    throw new Error(
+      import.meta.env.PROD
+        ? 'Cannot reach API. Check that the backend is deployed and /api proxy is configured.'
+        : 'Cannot reach API server. Start it with npm run dev:api'
+    );
   }
 
   let json: ApiResponse<T>;

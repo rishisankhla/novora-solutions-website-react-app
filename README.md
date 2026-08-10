@@ -56,4 +56,18 @@ http://localhost:3000/admin — requires backend running and seeded admin user (
 
 ## Production
 
-Set `VITE_API_URL` to your deployed API (e.g. `https://api.novorasolutions.com/api/v1`) and ensure backend `CLIENT_ORIGIN` matches your frontend domain.
+Full stack guide: see **backend** [PRODUCTION-DEPLOY.md](../novora-solutions-website-backend/PRODUCTION-DEPLOY.md).
+
+| Host | Service |
+|------|---------|
+| **Render** | API (`novora-solutions-website-backend`) |
+| **Netlify or Vercel** | This frontend |
+
+**Frontend env (Netlify/Vercel):**
+```env
+VITE_API_URL=/api/v1
+```
+
+API proxy to Render is configured in `netlify.toml`, `vercel.json`, and `public/_redirects`.
+
+**Never** put MongoDB, JWT, or SMTP secrets in this repo.
